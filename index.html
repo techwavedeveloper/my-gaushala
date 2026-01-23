@@ -213,6 +213,34 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <h2 class="section-title">Stories from Our Supporters</h2>
+            <p class="section-subtitle">Real voices, real impact</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Supporting GaoShala has been one of the most fulfilling decisions I've made. Knowing that my donation directly helps these sacred creatures gives me immense joy."</p>
+                    <p class="testimonial-author">- Rajesh Sharma</p>
+                    <p class="testimonial-amount">Regular Donor</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"The transparency and dedication of the team is remarkable. Every rupee is used with utmost care. I've visited the sanctuary and saw the transformation in the cows' lives."</p>
+                    <p class="testimonial-author">- Priya Patel</p>
+                    <p class="testimonial-amount">Adopted a Cow</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"This organization represents the best of India's spiritual values. The work they do with abandoned cows is truly inspiring. I encourage everyone to support this noble cause."</p>
+                    <p class="testimonial-author">- Amit Kumar</p>
+                    <p class="testimonial-amount">Monthly Supporter</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Mission Section -->
     <section class="mission">
         <div class="mission-container">
@@ -320,6 +348,19 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <h2 class="newsletter-title">Stay Updated</h2>
+            <p class="newsletter-subtitle">Get updates about our cow rescue missions and impact stories</p>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                <input type="email" id="newsletter-email" placeholder="Enter your email" class="newsletter-input" required>
+                <button type="submit" class="btn btn-primary newsletter-btn">Subscribe</button>
+            </form>
+            <p class="newsletter-note">✓ We respect your privacy. Unsubscribe at any time.</p>
         </div>
     </section>
 
@@ -529,6 +570,30 @@ Date: ${window.currentDonation.date}
             link.click();
 
             alert('Certificate downloaded! 🎉');
+        }
+
+        // Newsletter Subscription
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = document.getElementById('newsletter-email').value.trim();
+            
+            if (!email) {
+                alert('Please enter a valid email');
+                return;
+            }
+
+            let subscribers = JSON.parse(localStorage.getItem('subscribers')) || [];
+            
+            if (subscribers.includes(email)) {
+                alert('You are already subscribed! 📧');
+                return;
+            }
+
+            subscribers.push(email);
+            localStorage.setItem('subscribers', JSON.stringify(subscribers));
+            
+            document.getElementById('newsletter-email').value = '';
+            alert('Thank you for subscribing! 📧 You will receive updates soon.');
         }
 
         // Event listeners for action buttons

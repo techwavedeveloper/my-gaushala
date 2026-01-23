@@ -37,138 +37,108 @@
         </div>
     </section>
 
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="quote-container">
+            <blockquote class="donation-quote">
+                "The cow is the mother of the universe. Service to her is the highest worship."
+            </blockquote>
+        </div>
+    </section>
+
     <!-- Donation Options Section -->
     <section class="donation-section">
         <div class="donation-container">
-            <h2 class="section-title">Choose How to Help</h2>
-            <p class="section-subtitle">Every amount matters. Choose the option that works best for you.</p>
+            <h2 class="section-title">Choose a Cause</h2>
 
             <div class="donation-options-grid">
-                <!-- Donate a Cow -->
+                <!-- Feed a Cow for a Day -->
                 <div class="donation-option-card">
-                    <div class="donation-icon">🐄</div>
-                    <h3>Donate a Cow</h3>
-                    <p class="donation-description">Sponsor the complete monthly care of one cow including food, shelter, and medical attention.</p>
-                    <div class="donation-amount">₹2,500 / month</div>
-                    <ul class="donation-includes">
-                        <li>✓ Fresh organic fodder daily</li>
-                        <li>✓ 24/7 veterinary care</li>
-                        <li>✓ Shelter & protection</li>
-                        <li>✓ Monthly updates</li>
-                        <li>✓ Cow sponsorship certificate</li>
-                    </ul>
-                    <button class="btn btn-primary donate-option-btn" onclick="selectDonation('donate')">Donate Now</button>
+                    <h3>Feed a Cow for a Day</h3>
+                    <p class="donation-description">Provide green fodder and water.</p>
+                    <div class="donation-amount">₹ 100</div>
+                    <button class="btn btn-primary donate-option-btn" onclick="selectDonation('feed-day')">Donate Now</button>
                 </div>
 
-                <!-- Feed a Cow -->
+                <!-- Feed a Cow for a Month -->
                 <div class="donation-option-card">
-                    <div class="donation-icon">❤️</div>
-                    <h3>Feed a Cow</h3>
-                    <p class="donation-description">Contribute towards daily nutritious meals and green fodder for our sanctuary cows.</p>
-                    <div class="donation-amount">₹500 / meal</div>
-                    <ul class="donation-includes">
-                        <li>✓ High-quality green fodder</li>
-                        <li>✓ Nutritious supplements</li>
-                        <li>✓ Daily feeding updates</li>
-                        <li>✓ Photo of fed cow</li>
-                        <li>✓ Contribution recognition</li>
-                    </ul>
-                    <button class="btn btn-primary donate-option-btn" onclick="selectDonation('feed')">Feed Now</button>
+                    <h3>Feed a Cow for a Month</h3>
+                    <p class="donation-description">Complete nutritional care.</p>
+                    <div class="donation-amount">₹ 3,000</div>
+                    <button class="btn btn-primary donate-option-btn" onclick="selectDonation('feed-month')">Donate Now</button>
                 </div>
 
-                <!-- Heal a Cow -->
+                <!-- Medical Kit Sponsor -->
                 <div class="donation-option-card">
-                    <div class="donation-icon">⚕️</div>
-                    <h3>Heal a Cow</h3>
-                    <p class="donation-description">Support critical surgeries, emergency treatments, and medical care for rescued cows.</p>
-                    <div class="donation-amount">₹1,000 onwards</div>
-                    <ul class="donation-includes">
-                        <li>✓ Surgical procedures</li>
-                        <li>✓ Emergency treatments</li>
-                        <li>✓ Rehabilitation support</li>
-                        <li>✓ Medical report updates</li>
-                        <li>✓ Impact certificate</li>
-                    </ul>
-                    <button class="btn btn-primary donate-option-btn" onclick="selectDonation('heal')">Help Heal</button>
+                    <h3>Medical Kit Sponsor</h3>
+                    <p class="donation-description">Medicines for injured cows.</p>
+                    <div class="donation-amount">₹ 2,100</div>
+                    <button class="btn btn-primary donate-option-btn" onclick="selectDonation('medical')">Donate Now</button>
                 </div>
 
-                <!-- Custom Donation -->
+                <!-- Adopt a Cow Yearly -->
                 <div class="donation-option-card">
-                    <div class="donation-icon">🎁</div>
-                    <h3>Custom Donation</h3>
-                    <p class="donation-description">Make a custom contribution of any amount. Your donation directly supports our mission.</p>
-                    <div class="donation-amount">Flexible Amount</div>
-                    <ul class="donation-includes">
-                        <li>✓ Any amount welcome</li>
-                        <li>✓ Direct impact</li>
-                        <li>✓ Detailed receipt</li>
-                        <li>✓ Tax exemption eligible</li>
-                        <li>✓ Complete transparency</li>
-                    </ul>
-                    <button class="btn btn-primary donate-option-btn" onclick="selectDonation('custom')">Donate Custom</button>
+                    <h3>Adopt a Cow (Yearly)</h3>
+                    <p class="donation-description">Become a guardian for a year.</p>
+                    <div class="donation-amount">₹ 36,000</div>
+                    <button class="btn btn-primary donate-option-btn" onclick="selectDonation('adopt-yearly')">Donate Now</button>
                 </div>
+            </div>
+
+            <div class="tax-info">
+                <p>✓ All donations are eligible for tax exemption under section 80G of the Income Tax Act.</p>
             </div>
         </div>
     </section>
 
     <!-- Why Donate Section -->
     <section class="why-donate-section">
-        <h2 class="section-title">Why Your Donation Matters</h2>
-        <div class="impact-grid">
-            <div class="impact-item">
-                <h3>₹500</h3>
-                <p>Provides nutritious food for 5 cows for one day</p>
+        <h2 class="section-title">Scan to Donate (UPI)</h2>
+        <div class="upi-section">
+            <div class="qr-code-container">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=donate@gaoshala&pn=GaoShala&tn=Donation" alt="UPI QR Code">
+                <p class="upi-id">UPI ID: <strong>donate@gaoshala</strong></p>
             </div>
-            <div class="impact-item">
-                <h3>₹1,000</h3>
-                <p>Covers basic veterinary treatment and medication</p>
-            </div>
-            <div class="impact-item">
-                <h3>₹2,500</h3>
-                <p>Sponsors complete monthly care for one cow</p>
-            </div>
-            <div class="impact-item">
-                <h3>₹5,000</h3>
-                <p>Supports surgical procedures and emergency care</p>
+            <div class="payment-apps">
+                <button class="payment-btn gpay-btn" onclick="openUPI()">
+                    <span>Google Pay</span>
+                </button>
+                <button class="payment-btn phonepe-btn" onclick="openUPI()">
+                    <span>PhonePe</span>
+                </button>
+                <button class="payment-btn paytm-btn" onclick="openUPI()">
+                    <span>Paytm</span>
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Top Donors Section -->
-    <section class="top-donors-section">
-        <h2 class="section-title">Our Generous Donors</h2>
-        <p class="section-subtitle">Thank you to everyone who has contributed to saving cow lives!</p>
-        <div id="donors-display" class="donors-grid">
-            <!-- Donors will be displayed here dynamically -->
-        </div>
-        <p class="no-donors-message" id="no-donors">No donations yet. Be the first to make a difference!</p>
-    </section>
-
-    <!-- How It Works Section -->
-    <section class="how-it-works-section">
-        <h2 class="section-title">How Your Donation Works</h2>
-        <div class="steps-grid">
-            <div class="step-card">
-                <div class="step-number">1</div>
-                <h3>Select & Donate</h3>
-                <p>Choose a donation option and complete your contribution securely online.</p>
+    <!-- Bank Transfer Details -->
+    <section class="bank-transfer-section">
+        <h2 class="section-title">Bank Transfer Details</h2>
+        <div class="bank-details-container">
+            <div class="bank-detail-item">
+                <label>Company Name</label>
+                <p>Sammaan Foundation</p>
             </div>
-            <div class="step-card">
-                <div class="step-number">2</div>
-                <h3>Get Confirmed</h3>
-                <p>Receive confirmation email with donation receipt and details.</p>
+            <div class="bank-detail-item">
+                <label>Account Number</label>
+                <p>10245035190</p>
             </div>
-            <div class="step-card">
-                <div class="step-number">3</div>
-                <h3>See the Impact</h3>
-                <p>Receive updates and photos showing how your donation is helping cows.</p>
+            <div class="bank-detail-item">
+                <label>IFSC Code</label>
+                <p>IDFB0021331</p>
             </div>
-            <div class="step-card">
-                <div class="step-number">4</div>
-                <h3>Make it Regular</h3>
-                <p>Become a sustaining donor and create lasting impact with monthly support.</p>
+            <div class="bank-detail-item">
+                <label>Bank Name</label>
+                <p>IDFC First Bank of India</p>
+            </div>
+            <div class="bank-detail-item">
+                <label>Branch</label>
+                <p>Dilshad Garden</p>
             </div>
         </div>
+        <p class="bank-note">Neem Karori Baba Gau Seva is a part of Sammaan Foundation. All donations are eligible for tax benefits under section 80G.</p>
     </section>
 
     <!-- Bottom Action Bar -->
@@ -332,13 +302,17 @@
         }
 
         function selectDonation(type) {
-            const modals = {
-                'donate': 'donate-modal',
-                'feed': 'feed-modal',
-                'heal': 'heal-modal',
-                'custom': 'donate-modal'
+            const donationMap = {
+                'feed-day': { modal: 'donate-modal', amount: '₹ 100', campaign: 'Feed a Cow for a Day' },
+                'feed-month': { modal: 'donate-modal', amount: '₹ 3,000', campaign: 'Feed a Cow for a Month' },
+                'medical': { modal: 'donate-modal', amount: '₹ 2,100', campaign: 'Medical Kit Sponsor' },
+                'adopt-yearly': { modal: 'donate-modal', amount: '₹ 36,000', campaign: 'Adopt a Cow (Yearly)' }
             };
-            openModal(modals[type]);
+            
+            if (donationMap[type]) {
+                window.currentDonationType = donationMap[type];
+                openModal(donationMap[type].modal);
+            }
         }
 
         function openModal(modalId) {
@@ -357,8 +331,18 @@
             }
         }
 
+        function openUPI() {
+            const upiLink = 'upi://pay?pa=donate@gaoshala&pn=GaoShala&tn=Donation';
+            window.location.href = upiLink;
+        }
+
         function completeDonation(type, amount, campaign) {
             let nameInput, emailInput;
+            
+            if (window.currentDonationType) {
+                amount = window.currentDonationType.amount;
+                campaign = window.currentDonationType.campaign;
+            }
             
             switch(type) {
                 case 'donate':
@@ -392,7 +376,6 @@
 
             donors.unshift(donor);
             localStorage.setItem('donors', JSON.stringify(donors));
-            displayDonors();
 
             alert(`Thank you ${name}! Your donation of ${amount} has been recorded. 🙏`);
             nameInput.value = '';

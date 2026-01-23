@@ -1833,8 +1833,8 @@ body {
 /* Why Donate Section */
 .why-donate-section {
     padding: 4rem 1.5rem;
-    background: linear-gradient(135deg, var(--color-earth-dark) 0%, var(--color-earth) 100%);
-    color: white;
+    background: white;
+    color: var(--color-text-primary);
 }
 
 .impact-grid {
@@ -2234,7 +2234,7 @@ body {
 
 .upi-id {
     font-size: 1.1rem;
-    color: var(--color-text-secondary);
+    color: var(--color-text-primary);
     margin-top: 1rem;
 }
 

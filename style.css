@@ -289,89 +289,218 @@ body {
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* Quick Actions Section */
-.quick-actions {
-    background: #f5f5f5;
-    padding: 3rem 1.5rem;
-    margin-top: -3rem;
-    position: relative;
-    z-index: 30;
+/* Quick Actions Floating Buttons */
+.quick-actions-floating {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 40;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    max-width: 100%;
 }
 
-.quick-actions-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-}
-
-.action-btn {
+.action-btn-floating {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    padding: 1.5rem 2rem;
-    border-radius: 0.75rem;
-    text-decoration: none;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     color: white;
+    cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    flex-direction: column;
-    min-height: 120px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    min-height: 50px;
+    white-space: nowrap;
 }
 
 .action-icon {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
 }
 
 .action-text {
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: 0.9rem;
 }
 
-.action-donate {
+.action-donate-btn {
     background: linear-gradient(135deg, #ff9f1c 0%, #ff8c00 100%);
 }
 
-.action-donate:hover {
+.action-donate-btn:hover {
     background: linear-gradient(135deg, #ff8c00 0%, #ff7c00 100%);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 140, 0, 0.3);
 }
 
-.action-feed {
+.action-feed-btn {
     background: linear-gradient(135deg, #2a9d8f 0%, #1b6b60 100%);
 }
 
-.action-feed:hover {
+.action-feed-btn:hover {
     background: linear-gradient(135deg, #1b6b60 0%, #0d5450 100%);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(42, 157, 143, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(42, 157, 143, 0.3);
 }
 
-.action-heal {
+.action-heal-btn {
     background: linear-gradient(135deg, #f4d35e 0%, #f0c419 100%);
-    color: white;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.action-heal:hover {
+.action-heal-btn:hover {
     background: linear-gradient(135deg, #f0c419 0%, #e8b71f 100%);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(244, 211, 94, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(244, 211, 94, 0.4);
 }
 
-.action-whatsapp {
+.action-whatsapp-btn {
     background: linear-gradient(135deg, #25a742 0%, #1b7f34 100%);
 }
 
-.action-whatsapp:hover {
+.action-whatsapp-btn:hover {
     background: linear-gradient(135deg, #1b7f34 0%, #0f5a24 100%);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(37, 167, 66, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 167, 66, 0.3);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    border-radius: 1rem;
+    padding: 2.5rem;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease-out;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s ease;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    color: #333;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-icon {
+    font-size: 3rem;
+}
+
+.modal-header h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--color-earth-dark);
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.modal-description {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.modal-details {
+    background: var(--color-cream);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.modal-details p {
+    margin: 0.5rem 0;
+    color: #333;
+}
+
+.modal-details strong {
+    color: var(--color-saffron-dark);
+    font-size: 1.1rem;
+}
+
+.modal-donate-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: var(--color-saffron);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.modal-donate-btn:hover {
+    background: var(--color-saffron-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(230, 138, 0, 0.3);
 }
 
 /* Mission Section */
@@ -791,24 +920,20 @@ body {
         justify-content: center;
     }
 
-    .quick-actions {
-        margin-top: -2rem;
-        padding: 2rem 1rem;
+    .quick-actions-floating {
+        bottom: 1rem;
+        right: 1rem;
+        flex-direction: column;
     }
 
-    .quick-actions-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+    .action-btn-floating {
+        width: 100%;
+        max-width: 200px;
     }
 
-    .action-btn {
-        padding: 1.2rem 1rem;
-        min-height: 100px;
-        font-size: 0.9rem;
-    }
-
-    .action-icon {
-        font-size: 2rem;
+    .modal-content {
+        width: 95%;
+        padding: 2rem;
     }
 
     .mission-container {
@@ -847,21 +972,28 @@ body {
     }
 
     @media (max-width: 480px) {
-        .quick-actions-container {
-            grid-template-columns: 1fr;
+        .quick-actions-floating {
+            flex-direction: column;
+            gap: 0.5rem;
+            bottom: 0.5rem;
+            right: 0.5rem;
         }
 
-        .action-btn {
-            flex-direction: row;
-            padding: 1rem;
+        .action-btn-floating {
+            padding: 0.75rem 1rem;
+            font-size: 0.8rem;
         }
 
         .action-icon {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
 
-        .action-text {
-            font-size: 0.9rem;
+        .modal-header h2 {
+            font-size: 1.4rem;
+        }
+
+        .modal-icon {
+            font-size: 2rem;
         }
     }
 }

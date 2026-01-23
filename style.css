@@ -1675,6 +1675,79 @@ body {
     line-height: 1.6;
 }
 
+/* Map Section */
+.map-section {
+    padding: 4rem 1.5rem;
+    background: linear-gradient(135deg, rgba(230, 138, 0, 0.05) 0%, rgba(34, 139, 34, 0.05) 100%);
+}
+
+.map-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.map-section h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    color: var(--color-earth-dark);
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.map-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+}
+
+.map-wrapper {
+    margin-bottom: 3rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.map-wrapper iframe {
+    display: block;
+    width: 100%;
+}
+
+.map-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.map-info-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.map-info-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.map-info-item h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    color: var(--color-earth-dark);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.map-info-item p {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
 /* Donation Section */
 .donation-section {
     padding: 4rem 1.5rem;
@@ -4317,5 +4390,43 @@ body {
     .beyond-care h2,
     .commitments-section h2 {
         font-size: 1.3rem;
+    }
+
+    /* Map Section Mobile */
+    .map-section {
+        padding: 2rem 1.5rem;
+    }
+
+    .map-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .map-subtitle {
+        font-size: 1rem;
+    }
+
+    .map-wrapper {
+        height: 300px;
+    }
+
+    .map-wrapper iframe {
+        height: 300px;
+    }
+
+    .map-info {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .map-info-item {
+        padding: 1.5rem;
+    }
+
+    .map-info-item h3 {
+        font-size: 1rem;
+    }
+
+    .map-info-item p {
+        font-size: 0.9rem;
     }
 }

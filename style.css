@@ -289,6 +289,91 @@ body {
     background: rgba(255, 255, 255, 0.2);
 }
 
+/* Quick Actions Section */
+.quick-actions {
+    background: #f5f5f5;
+    padding: 3rem 1.5rem;
+    margin-top: -3rem;
+    position: relative;
+    z-index: 30;
+}
+
+.quick-actions-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    min-height: 120px;
+}
+
+.action-icon {
+    font-size: 2.5rem;
+}
+
+.action-text {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.action-donate {
+    background: linear-gradient(135deg, #ff9f1c 0%, #ff8c00 100%);
+}
+
+.action-donate:hover {
+    background: linear-gradient(135deg, #ff8c00 0%, #ff7c00 100%);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3);
+}
+
+.action-feed {
+    background: linear-gradient(135deg, #2a9d8f 0%, #1b6b60 100%);
+}
+
+.action-feed:hover {
+    background: linear-gradient(135deg, #1b6b60 0%, #0d5450 100%);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(42, 157, 143, 0.3);
+}
+
+.action-heal {
+    background: linear-gradient(135deg, #f4d35e 0%, #f0c419 100%);
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.action-heal:hover {
+    background: linear-gradient(135deg, #f0c419 0%, #e8b71f 100%);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(244, 211, 94, 0.3);
+}
+
+.action-whatsapp {
+    background: linear-gradient(135deg, #25a742 0%, #1b7f34 100%);
+}
+
+.action-whatsapp:hover {
+    background: linear-gradient(135deg, #1b7f34 0%, #0f5a24 100%);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(37, 167, 66, 0.3);
+}
+
 /* Mission Section */
 .mission {
     padding: 5rem 1.5rem;
@@ -706,6 +791,26 @@ body {
         justify-content: center;
     }
 
+    .quick-actions {
+        margin-top: -2rem;
+        padding: 2rem 1rem;
+    }
+
+    .quick-actions-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .action-btn {
+        padding: 1.2rem 1rem;
+        min-height: 100px;
+        font-size: 0.9rem;
+    }
+
+    .action-icon {
+        font-size: 2rem;
+    }
+
     .mission-container {
         grid-template-columns: 1fr;
     }
@@ -739,5 +844,24 @@ body {
     .footer-links {
         flex-direction: column;
         gap: 0.5rem;
+    }
+
+    @media (max-width: 480px) {
+        .quick-actions-container {
+            grid-template-columns: 1fr;
+        }
+
+        .action-btn {
+            flex-direction: row;
+            padding: 1rem;
+        }
+
+        .action-icon {
+            font-size: 1.5rem;
+        }
+
+        .action-text {
+            font-size: 0.9rem;
+        }
     }
 }

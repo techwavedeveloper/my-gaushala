@@ -3,116 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neem Karori Baba Gau Sewa - Noida</title>
+    <title>Neem Karori Baba Gau Seva - Sammaan Foundation</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <nav class="navbar">
-        <div class="logo">GauShala</div>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Our Gallery</a></li>
-            <li><a href="#">Contact Us</a></li>
-        </ul>
-    </nav>
-
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Neem Karori Baba Gau Seva</h1>
-            <p>A loving home for over 500 sacred cows in Noida. Your support provides food, shelter, and medical care to these gentle souls.</p>
-            <div class="hero-btns">
-                <a href="#" class="btn-donate">Donate Now</a>
-                <a href="#" class="btn-mission">Our Mission →</a>
-            </div>
+    <!-- Header/Navigation -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">
+                Gao<span class="logo-green">Shala</span>
+            </a>
+            <nav class="navbar-menu">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Gallery</a>
+                <a href="#" class="nav-link">Contact</a>
+                <a href="#" class="nav-donate">Donate Now</a>
+            </nav>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-        <img src="https://images.unsplash.com/photo-1596733261625-724a87c9c0dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Cow Shelter" class="hero-image">
     </header>
 
-    <section class="mission">
-        <div class="mission-content">
-            <span class="sub-heading">OUR MISSION</span>
-            <h2 class="main-heading">Rescuing, Protecting, and Nurturing Cows</h2>
-            <p>In Indian culture, the cow is revered as 'Gau Mata'. However, many are left abandoned on the streets, injured, or starving. Our Goshala provides a sanctuary for these innocent souls, offering them love, care, and a dignified life.</p>
-            
-            <div class="mission-points">
-                <div class="point">✓ Providing shelter to abandoned cows</div>
-                <div class="point">✓ 24/7 Medical care for injured animals</div>
-                <div class="point">✓ Organic farming using Panchagavya</div>
-                <div class="point">✓ Promoting Desi Cow breeds</div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1596733261625-724a87c9c0dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Cow Shelter">
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>Under Sammaan Foundation</span>
             </div>
-
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <h3>1500+</h3>
-                    <p>Cows Protected</p>
-                </div>
-                <div class="stat-card">
-                    <h3>500+</h3>
-                    <p>Injured Cows Treated</p>
-                </div>
-                <div class="stat-card">
-                    <h3>5000+</h3>
-                    <p>Daily Meals Served</p>
-                </div>
-                <div class="stat-card">
-                    <h3>24/7</h3>
-                    <p>Medical Emergency</p>
-                </div>
+            <h1 class="hero-title">Neem Karori Baba <span class="title-highlight">Gau Seva</span></h1>
+            <p class="hero-subtitle">A loving home for over 500 sacred cows in Noida. Your support provides food, shelter, and medical care to these gentle souls.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">
+                    <span>Donate Now</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                    </svg>
+                </a>
+                <a href="#" class="btn btn-secondary">Our Mission</a>
             </div>
         </div>
     </section>
 
-    <section class="campaigns">
-        <span class="sub-heading">HOW YOU CAN HELP</span>
-        <h2 class="main-heading">FEATURED CAMPAIGNS</h2>
-        <p class="intro-text">Choose a cause that resonates with you. Every donation, big or small, makes a significant difference in a cow's life.</p>
+    <!-- Mission Section -->
+    <section class="mission">
+        <div class="mission-container">
+            <div class="mission-text">
+                <h4 class="section-subtitle">Our Mission</h4>
+                <h2 class="section-title">Rescuing, Protecting, and Nurturing Cows</h2>
+                <p class="mission-description">In Indian culture, the cow is revered as 'Gau Mata'. However, many are left abandoned on the streets, injured, or starving. Our Goshala provides a sanctuary for these innocent souls, offering them love, care, and a dignified life.</p>
+                
+                <ul class="mission-points">
+                    <li>
+                        <span class="check-mark">✓</span>
+                        <span>Providing shelter to abandoned cows</span>
+                    </li>
+                    <li>
+                        <span class="check-mark">✓</span>
+                        <span>24/7 Medical care for injured animals</span>
+                    </li>
+                    <li>
+                        <span class="check-mark">✓</span>
+                        <span>Organic farming using Panchagavya</span>
+                    </li>
+                    <li>
+                        <span class="check-mark">✓</span>
+                        <span>Promoting Desi Cow breeds</span>
+                    </li>
+                </ul>
+                
+                <a href="#" class="learn-more-link">Learn More About Us →</a>
+            </div>
+            <div class="mission-image">
+                <img src="https://images.unsplash.com/photo-1596733261625-724a87c9c0dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gau Seva">
+            </div>
+        </div>
+    </section>
 
-        <div class="campaign-grid">
+    <!-- Statistics Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">1500+</div>
+                <div class="stat-label">Cows Protected</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Injured Cows Treated</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5000+</div>
+                <div class="stat-label">Daily Meals Served</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Medical Emergency</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campaigns Section -->
+    <section class="campaigns">
+        <div class="campaigns-header">
+            <h4 class="section-subtitle">How You Can Help</h4>
+            <h2 class="section-title">Featured Campaigns</h2>
+            <p class="campaigns-description">Choose a cause that resonates with you. Every donation, big or small, makes a significant difference in a cow's life.</p>
+        </div>
+
+        <div class="campaigns-grid">
             <div class="campaign-card">
-                <img src="https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?w=500" alt="Adopt a Cow">
-                <div class="card-body">
+                <div class="campaign-image">
+                    <img src="https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Adopt a Cow">
+                </div>
+                <div class="campaign-content">
                     <h3>Adopt a Cow</h3>
                     <p>Sponsor the complete care of one cow for a month or year. Includes food, medicine, and shelter.</p>
-                    <div class="card-footer">
-                        <span class="price">₹2,500 / month</span>
-                        <button class="donate-small-btn">Donate</button>
+                    <div class="campaign-footer">
+                        <span class="campaign-price">₹2,500 / month</span>
+                        <a href="#" class="btn-donate-card">Donate</a>
                     </div>
                 </div>
             </div>
 
             <div class="campaign-card">
-                <img src="https://images.unsplash.com/photo-1523413651479-596eb2635e93?w=500" alt="Green Fodder Sewa">
-                <div class="card-body">
+                <div class="campaign-image">
+                    <img src="https://images.unsplash.com/photo-1598282928399-563b7280436d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Green Fodder Sewa">
+                </div>
+                <div class="campaign-content">
                     <h3>Green Fodder Sewa</h3>
                     <p>Contribute towards daily green fodder. Just ₹500 can feed 20 cows a nutritious meal.</p>
-                    <div class="card-footer">
-                        <span class="price">Any Amount</span>
-                        <button class="donate-small-btn">Donate</button>
+                    <div class="campaign-footer">
+                        <span class="campaign-price">Any Amount</span>
+                        <a href="#" class="btn-donate-card">Donate</a>
                     </div>
                 </div>
             </div>
 
             <div class="campaign-card">
-                <img src="https://images.unsplash.com/photo-1584308666744-24d5f400f6f8?w=500" alt="Medical Relief Fund">
-                <div class="card-body">
+                <div class="campaign-image">
+                    <img src="https://images.unsplash.com/photo-1574320696655-7b3017a78370?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Medical Relief Fund">
+                </div>
+                <div class="campaign-content">
                     <h3>Medical Relief Fund</h3>
                     <p>Support critical surgeries and treatments for injured cows rescued from accidents.</p>
-                    <div class="card-footer">
-                        <span class="price">₹1,000 onwards</span>
-                        <button class="donate-small-btn">Donate</button>
+                    <div class="campaign-footer">
+                        <span class="campaign-price">₹1,000 onwards</span>
+                        <a href="#" class="btn-donate-card">Donate</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-section">
-                <h4>Quick Links</h4>
+        <div class="footer-content">
+            <div class="footer-column">
+                <a href="#" class="footer-logo">Gao<span>Shala</span></a>
+                <p class="footer-description">Dedicated to the service, protection, and welfare of cows. Join us in our mission to create a sanctuary where every cow lives with dignity and love.</p>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Quick Links</h3>
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">About Us</a></li>
@@ -120,26 +179,27 @@
                     <li><a href="#">Contact Us</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h4>Contact Us</h4>
-                <p>📍 Neem Karori Baba Gau Sewa,Sector-144, Greater Noida - 201306</p>
-                <p>📞 +91 9811319139</p>
-                <p>✉️ info@sammaan.ngo</p>
+            <div class="footer-column">
+                <h3 class="footer-title">Contact Us</h3>
+                <ul class="footer-contact">
+                    <li><span>📍</span> Neem Karori Baba Gau Seva,<br>Sector-144, Greater Noida - 201306</li>
+                    <li><span>📞</span> +91 9811319139</li>
+                    <li><span>✉️</span> info@sammaan.ngo</li>
+                </ul>
             </div>
-            <div class="footer-section">
-                <h4>Support Us</h4>
-                <p>Your contribution can save a life today.</p>
-                <a href="#" class="btn-donate-footer">Donate Now</a>
+            <div class="footer-column">
+                <h3 class="footer-title">Support Us</h3>
+                <p class="footer-cta">Your contribution can save a life today.</p>
+                <a href="#" class="btn btn-primary">Donate Now</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 GauShala. All rights reserved. | UNDER SAMMAAN FOUNDATION</p>
-            <div class="footer-links-bottom">
+            <p>© 2026 GaoShala. All rights reserved.</p>
+            <div class="footer-links">
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
             </div>
         </div>
     </footer>
-
 </body>
 </html>

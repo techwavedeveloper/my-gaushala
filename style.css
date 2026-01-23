@@ -1,39 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; color: #333; line-height: 1.6; }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-html { scroll-behavior: smooth; }
+/* Reference Colors */
+:root {
+    --primary-orange: #e67e00;
+    --dark-footer: #4a2c10;
+    --text-brown: #5d4037;
+}
 
 .navbar {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 15px 10%; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    position: sticky; top: 0; z-index: 1000;
+    display: flex; justify-content: space-between; padding: 20px 8%;
+    background: white; border-bottom: 1px solid #eee;
 }
-.logo { font-size: 26px; font-weight: 800; color: #1b4332; }
-.logo span { color: #f39c12; }
+.logo { font-size: 24px; font-weight: bold; color: #2d5a27; }
+.logo span { color: var(--primary-orange); }
 .navbar ul { display: flex; list-style: none; gap: 30px; }
-.navbar ul li a { text-decoration: none; color: #444; font-weight: 600; transition: 0.3s; }
-.navbar ul li a:hover { color: #f39c12; }
+.navbar ul li a { text-decoration: none; color: #444; font-weight: 500; }
 
 .hero {
-    height: 85vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                url('https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?q=80&w=2070');
+    height: 70vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('https://images.unsplash.com/photo-1546445317-29f4545e9d53?w=1500');
     background-size: cover; background-position: center;
-    display: flex; align-items: center; justify-content: center; color: white; text-align: center;
+    display: flex; align-items: center; justify-content: center; text-align: center; color: white;
 }
-.hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 15px; }
-.btn { 
-    background: #f39c12; color: white; padding: 15px 40px; 
-    border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s;
-}
-.btn:hover { background: #d35400; transform: translateY(-3px); }
+.hero h1 { font-size: 2.8rem; max-width: 800px; margin-bottom: 20px; }
+.btn-orange { background: var(--primary-orange); color: white; padding: 15px 35px; border-radius: 30px; text-decoration: none; font-weight: bold; margin-right: 15px; }
+.btn-outline { border: 1px solid white; color: white; padding: 15px 35px; border-radius: 30px; text-decoration: none; font-weight: bold; }
 
-.container { padding: 80px 10%; text-align: center; }
-.services-section { background: #fdfaf5; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-.card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s; }
-.card:hover { transform: translateY(-10px); }
-.card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 20px; }
+.campaigns { padding: 80px 10%; text-align: center; background: #fffcf5; }
+.sub-title { color: var(--primary-orange); font-weight: bold; letter-spacing: 2px; }
+.main-title { font-family: 'Crimson Text', serif; font-size: 3rem; color: var(--text-brown); margin: 10px 0; }
+.desc { max-width: 700px; margin: 0 auto 50px auto; color: #666; }
 
-footer { background: #1b4332; color: white; padding: 60px 10%; text-align: center; }
-.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 30px; padding-top: 20px; font-size: 0.9rem; }
+.campaign-grid { display: flex; justify-content: center; }
+.campaign-card { width: 350px; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: left; }
+.campaign-card img { width: 100%; height: 200px; object-fit: cover; }
+.card-body { padding: 25px; }
+.card-body h3 { font-size: 1.2rem; margin-bottom: 15px; color: var(--text-brown); }
+.card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+.any-amount { color: #2d5a27; font-weight: bold; }
+.donate-btn { background: var(--primary-orange); color: white; border: none; padding: 10px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+
+footer { background: var(--dark-footer); color: #f5f5f5; padding: 60px 10%; }
+.footer-grid { display: flex; justify-content: space-between; }
+.footer-links a { display: block; color: white; text-decoration: none; margin-bottom: 15px; }
+.footer-contact p { margin-bottom: 15px; }

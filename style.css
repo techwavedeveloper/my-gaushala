@@ -326,6 +326,7 @@ body {
 
 .action-text {
     font-size: 0.9rem;
+    display: none;
 }
 
 .action-donate-btn {
@@ -341,6 +342,10 @@ body {
     width: auto;
 }
 
+.action-donate-btn:hover .action-text {
+    display: inline;
+}
+
 .action-feed-btn {
     background: linear-gradient(135deg, #2a9d8f 0%, #1b6b60 100%);
 }
@@ -352,6 +357,10 @@ body {
     border-radius: 0.5rem;
     padding: 0.7rem 1.2rem;
     width: auto;
+}
+
+.action-feed-btn:hover .action-text {
+    display: inline;
 }
 
 .action-heal-btn {
@@ -367,6 +376,10 @@ body {
     width: auto;
 }
 
+.action-heal-btn:hover .action-text {
+    display: inline;
+}
+
 .action-whatsapp-btn {
     background: linear-gradient(135deg, #25a742 0%, #1b7f34 100%);
 }
@@ -378,6 +391,10 @@ body {
     border-radius: 0.5rem;
     padding: 0.7rem 1.2rem;
     width: auto;
+}
+
+.action-whatsapp-btn:hover .action-text {
+    display: inline;
 }
 
 /* Modal Styles */

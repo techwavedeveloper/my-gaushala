@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - Neem Karori Baba Gau Seva</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                Gao<span class="logo-green">Shala</span>
+            </a>
+            <nav class="navbar-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="donate.html" class="nav-donate active">Donate Now</a>
+            </nav>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>Make a Difference</h1>
+            <p>Your Contribution Can Save a Life Today</p>
+        </div>
+    </section>
+
+    <!-- Donation Options Section -->
+    <section class="donation-section">
+        <div class="donation-container">
+            <h2 class="section-title">Choose How to Help</h2>
+            <p class="section-subtitle">Every amount matters. Choose the option that works best for you.</p>
+
+            <div class="donation-options-grid">
+                <!-- Donate a Cow -->
+                <div class="donation-option-card">
+                    <div class="donation-icon">🐄</div>
+                    <h3>Donate a Cow</h3>
+                    <p class="donation-description">Sponsor the complete monthly care of one cow including food, shelter, and medical attention.</p>
+                    <div class="donation-amount">₹2,500 / month</div>
+                    <ul class="donation-includes">
+                        <li>✓ Fresh organic fodder daily</li>
+                        <li>✓ 24/7 veterinary care</li>
+                        <li>✓ Shelter & protection</li>
+                        <li>✓ Monthly updates</li>
+                        <li>✓ Cow sponsorship certificate</li>
+                    </ul>
+                    <button class="btn btn-primary donate-option-btn" onclick="selectDonation('donate')">Donate Now</button>
+                </div>
+
+                <!-- Feed a Cow -->
+                <div class="donation-option-card">
+                    <div class="donation-icon">❤️</div>
+                    <h3>Feed a Cow</h3>
+                    <p class="donation-description">Contribute towards daily nutritious meals and green fodder for our sanctuary cows.</p>
+                    <div class="donation-amount">₹500 / meal</div>
+                    <ul class="donation-includes">
+                        <li>✓ High-quality green fodder</li>
+                        <li>✓ Nutritious supplements</li>
+                        <li>✓ Daily feeding updates</li>
+                        <li>✓ Photo of fed cow</li>
+                        <li>✓ Contribution recognition</li>
+                    </ul>
+                    <button class="btn btn-primary donate-option-btn" onclick="selectDonation('feed')">Feed Now</button>
+                </div>
+
+                <!-- Heal a Cow -->
+                <div class="donation-option-card">
+                    <div class="donation-icon">⚕️</div>
+                    <h3>Heal a Cow</h3>
+                    <p class="donation-description">Support critical surgeries, emergency treatments, and medical care for rescued cows.</p>
+                    <div class="donation-amount">₹1,000 onwards</div>
+                    <ul class="donation-includes">
+                        <li>✓ Surgical procedures</li>
+                        <li>✓ Emergency treatments</li>
+                        <li>✓ Rehabilitation support</li>
+                        <li>✓ Medical report updates</li>
+                        <li>✓ Impact certificate</li>
+                    </ul>
+                    <button class="btn btn-primary donate-option-btn" onclick="selectDonation('heal')">Help Heal</button>
+                </div>
+
+                <!-- Custom Donation -->
+                <div class="donation-option-card">
+                    <div class="donation-icon">🎁</div>
+                    <h3>Custom Donation</h3>
+                    <p class="donation-description">Make a custom contribution of any amount. Your donation directly supports our mission.</p>
+                    <div class="donation-amount">Flexible Amount</div>
+                    <ul class="donation-includes">
+                        <li>✓ Any amount welcome</li>
+                        <li>✓ Direct impact</li>
+                        <li>✓ Detailed receipt</li>
+                        <li>✓ Tax exemption eligible</li>
+                        <li>✓ Complete transparency</li>
+                    </ul>
+                    <button class="btn btn-primary donate-option-btn" onclick="selectDonation('custom')">Donate Custom</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Donate Section -->
+    <section class="why-donate-section">
+        <h2 class="section-title">Why Your Donation Matters</h2>
+        <div class="impact-grid">
+            <div class="impact-item">
+                <h3>₹500</h3>
+                <p>Provides nutritious food for 5 cows for one day</p>
+            </div>
+            <div class="impact-item">
+                <h3>₹1,000</h3>
+                <p>Covers basic veterinary treatment and medication</p>
+            </div>
+            <div class="impact-item">
+                <h3>₹2,500</h3>
+                <p>Sponsors complete monthly care for one cow</p>
+            </div>
+            <div class="impact-item">
+                <h3>₹5,000</h3>
+                <p>Supports surgical procedures and emergency care</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Donors Section -->
+    <section class="top-donors-section">
+        <h2 class="section-title">Our Generous Donors</h2>
+        <p class="section-subtitle">Thank you to everyone who has contributed to saving cow lives!</p>
+        <div id="donors-display" class="donors-grid">
+            <!-- Donors will be displayed here dynamically -->
+        </div>
+        <p class="no-donors-message" id="no-donors">No donations yet. Be the first to make a difference!</p>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works-section">
+        <h2 class="section-title">How Your Donation Works</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Select & Donate</h3>
+                <p>Choose a donation option and complete your contribution securely online.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Get Confirmed</h3>
+                <p>Receive confirmation email with donation receipt and details.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>See the Impact</h3>
+                <p>Receive updates and photos showing how your donation is helping cows.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h3>Make it Regular</h3>
+                <p>Become a sustaining donor and create lasting impact with monthly support.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Action Bar -->
+    <div class="bottom-action-bar">
+        <button class="action-box-btn action-donate-btn-bottom" data-modal="donate-modal">
+            <span class="action-icon-box">🐄</span>
+            <span class="action-text-box">Donate</span>
+        </button>
+        <button class="action-box-btn action-feed-btn-bottom" data-modal="feed-modal">
+            <span class="action-icon-box">❤️</span>
+            <span class="action-text-box">Feed</span>
+        </button>
+        <button class="action-box-btn action-heal-btn-bottom" data-modal="heal-modal">
+            <span class="action-icon-box">⚕️</span>
+            <span class="action-text-box">Heal</span>
+        </button>
+        <button class="action-box-btn action-whatsapp-btn-bottom" data-modal="whatsapp-modal">
+            <span class="action-icon-box">💬</span>
+            <span class="action-text-box">WhatsApp</span>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <a href="index.html" class="footer-logo">Gao<span>Shala</span></a>
+                <p class="footer-description">Dedicated to the service, protection, and welfare of cows. Join us in our mission to create a sanctuary where every cow lives with dignity and love.</p>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="gallery.html">Our Gallery</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Contact Us</h3>
+                <ul class="footer-contact">
+                    <li><span>📍</span> Neem Karori Baba Gau Seva,<br>Sector-144, Greater Noida - 201306</li>
+                    <li><span>📞</span> +91 9811319139</li>
+                    <li><span>✉️</span> info@sammaan.ngo</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Support Us</h3>
+                <p class="footer-cta">Your contribution can save a life today.</p>
+                <a href="donate.html" class="btn btn-primary">Donate Now</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 GaoShala. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="donate-modal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('donate-modal')"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('donate-modal')">&times;</button>
+            <div class="modal-header">
+                <span class="modal-icon">🐄</span>
+                <h2>Donate a Cow</h2>
+            </div>
+            <p class="modal-description">Sponsor the complete care of one cow for a month or year.</p>
+            <div class="modal-details">
+                <p><strong>₹2,500 / month</strong></p>
+            </div>
+            <div class="donation-form">
+                <input type="text" id="donor-name-donate" placeholder="Enter your name" class="donor-input">
+                <input type="email" id="donor-email-donate" placeholder="Enter your email" class="donor-input">
+                <button class="modal-donate-btn" onclick="completeDonation('donate', '₹2,500 / month', 'Donate a Cow')">Complete Donation</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="feed-modal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('feed-modal')"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('feed-modal')">&times;</button>
+            <div class="modal-header">
+                <span class="modal-icon">❤️</span>
+                <h2>Feed a Cow</h2>
+            </div>
+            <p class="modal-description">Contribute towards daily green fodder and nutritious meals.</p>
+            <div class="modal-details">
+                <p><strong>₹500 / meal</strong></p>
+            </div>
+            <div class="donation-form">
+                <input type="text" id="donor-name-feed" placeholder="Enter your name" class="donor-input">
+                <input type="email" id="donor-email-feed" placeholder="Enter your email" class="donor-input">
+                <button class="modal-donate-btn" onclick="completeDonation('feed', '₹500', 'Feed a Cow')">Contribute Now</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="heal-modal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('heal-modal')"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('heal-modal')">&times;</button>
+            <div class="modal-header">
+                <span class="modal-icon">⚕️</span>
+                <h2>Heal a Cow</h2>
+            </div>
+            <p class="modal-description">Support critical surgeries and emergency treatments.</p>
+            <div class="modal-details">
+                <p><strong>₹1,000 onwards</strong></p>
+            </div>
+            <div class="donation-form">
+                <input type="text" id="donor-name-heal" placeholder="Enter your name" class="donor-input">
+                <input type="email" id="donor-email-heal" placeholder="Enter your email" class="donor-input">
+                <button class="modal-donate-btn" onclick="completeDonation('heal', '₹1,000', 'Heal a Cow')">Support Medical Care</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="whatsapp-modal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('whatsapp-modal')"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('whatsapp-modal')">&times;</button>
+            <div class="modal-header">
+                <span class="modal-icon">💬</span>
+                <h2>Connect on WhatsApp</h2>
+            </div>
+            <div class="modal-details">
+                <p><strong>+91 9811319139</strong></p>
+            </div>
+            <a href="https://wa.me/919811319139" target="_blank" class="modal-donate-btn">Open WhatsApp</a>
+        </div>
+    </div>
+
+    <script>
+        let donors = JSON.parse(localStorage.getItem('donors')) || [];
+
+        function displayDonors() {
+            const donorsDisplay = document.getElementById('donors-display');
+            const noDonorsMessage = document.getElementById('no-donors');
+
+            if (donors.length === 0) {
+                donorsDisplay.innerHTML = '';
+                noDonorsMessage.style.display = 'block';
+                return;
+            }
+
+            noDonorsMessage.style.display = 'none';
+            donorsDisplay.innerHTML = donors.map(donor => `
+                <div class="donor-card">
+                    <div class="donor-avatar">${donor.name.charAt(0).toUpperCase()}</div>
+                    <h4>${donor.name}</h4>
+                    <p class="donor-amount">${donor.amount}</p>
+                    <p class="donor-campaign">${donor.campaign}</p>
+                    <p class="donor-date">${donor.date}</p>
+                </div>
+            `).join('');
+        }
+
+        function selectDonation(type) {
+            const modals = {
+                'donate': 'donate-modal',
+                'feed': 'feed-modal',
+                'heal': 'heal-modal',
+                'custom': 'donate-modal'
+            };
+            openModal(modals[type]);
+        }
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function completeDonation(type, amount, campaign) {
+            let nameInput, emailInput;
+            
+            switch(type) {
+                case 'donate':
+                    nameInput = document.getElementById('donor-name-donate');
+                    emailInput = document.getElementById('donor-email-donate');
+                    break;
+                case 'feed':
+                    nameInput = document.getElementById('donor-name-feed');
+                    emailInput = document.getElementById('donor-email-feed');
+                    break;
+                case 'heal':
+                    nameInput = document.getElementById('donor-name-heal');
+                    emailInput = document.getElementById('donor-email-heal');
+                    break;
+            }
+
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+
+            if (!name) {
+                alert('Please enter your name');
+                return;
+            }
+
+            const donor = {
+                name: name,
+                amount: amount,
+                campaign: campaign,
+                date: new Date().toLocaleDateString('en-IN')
+            };
+
+            donors.unshift(donor);
+            localStorage.setItem('donors', JSON.stringify(donors));
+            displayDonors();
+
+            alert(`Thank you ${name}! Your donation of ${amount} has been recorded. 🙏`);
+            nameInput.value = '';
+            emailInput.value = '';
+            closeModal(type + '-modal');
+        }
+
+        document.querySelectorAll('.action-box-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const modalId = this.getAttribute('data-modal');
+                openModal(modalId);
+            });
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Display donors on page load
+        displayDonors();
+    </script>
+</body>
+</html>

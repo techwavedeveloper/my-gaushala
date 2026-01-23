@@ -88,7 +88,11 @@
                 <p><strong>₹2,500 / month</strong></p>
                 <p>Your contribution provides food, veterinary care, and a safe shelter for one sacred cow.</p>
             </div>
-            <a href="#" class="modal-donate-btn">Proceed to Donate</a>
+            <div class="donation-form">
+                <input type="text" id="donor-name-donate" placeholder="Enter your name" class="donor-input">
+                <input type="email" id="donor-email-donate" placeholder="Enter your email" class="donor-input">
+                <button class="modal-donate-btn" onclick="completeDonation('donate', '₹2,500 / month', 'Donate a Cow')">Complete Donation</button>
+            </div>
         </div>
     </div>
 
@@ -106,7 +110,11 @@
                 <p><strong>₹500 / meal</strong></p>
                 <p>Just ₹500 can feed 20 cows a complete nutritious meal. Help us provide fresh, organic fodder daily.</p>
             </div>
-            <a href="#" class="modal-donate-btn">Contribute Now</a>
+            <div class="donation-form">
+                <input type="text" id="donor-name-feed" placeholder="Enter your name" class="donor-input">
+                <input type="email" id="donor-email-feed" placeholder="Enter your email" class="donor-input">
+                <button class="modal-donate-btn" onclick="completeDonation('feed', '₹500', 'Feed a Cow')">Contribute Now</button>
+            </div>
         </div>
     </div>
 
@@ -124,7 +132,11 @@
                 <p><strong>₹1,000 onwards</strong></p>
                 <p>Every contribution helps provide immediate medical care, surgeries, and recovery support for rescued and injured cows.</p>
             </div>
-            <a href="#" class="modal-donate-btn">Support Medical Care</a>
+            <div class="donation-form">
+                <input type="text" id="donor-name-heal" placeholder="Enter your name" class="donor-input">
+                <input type="email" id="donor-email-heal" placeholder="Enter your email" class="donor-input">
+                <button class="modal-donate-btn" onclick="completeDonation('heal', '₹1,000', 'Heal a Cow')">Support Medical Care</button>
+            </div>
         </div>
     </div>
 
@@ -145,6 +157,61 @@
             <a href="https://wa.me/919811319139" target="_blank" class="modal-donate-btn">Open WhatsApp</a>
         </div>
     </div>
+
+    <!-- Donation Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('success-modal')"></div>
+        <div class="modal-content modal-success">
+            <button class="modal-close" onclick="closeModal('success-modal')">&times;</button>
+            <div class="success-icon">✓</div>
+            <h2>Thank You for Your Donation!</h2>
+            <p>Your contribution has been recorded. Share your contribution with the world!</p>
+            
+            <div class="certificate-preview" id="certificatePreview">
+                <div class="certificate-header">🐄 Neem Karori Baba Gau Seva 🐄</div>
+                <div class="certificate-content">
+                    <p class="cert-text">This is to certify that</p>
+                    <p class="cert-name" id="certName">Your Name</p>
+                    <p class="cert-text">has generously contributed to our Gau Seva mission</p>
+                    <p class="cert-amount" id="certAmount">₹Amount</p>
+                    <p class="cert-text">to support, protect and care for our sacred cows.</p>
+                    <p class="cert-date">📅 <span id="certDate"></span></p>
+                </div>
+                <div class="certificate-footer">🙏 Gratitude & Blessings 🙏</div>
+            </div>
+
+            <div class="share-buttons">
+                <button class="share-btn share-whatsapp" onclick="shareOnWhatsApp()">
+                    <span>📱 WhatsApp</span>
+                </button>
+                <button class="share-btn share-facebook" onclick="shareOnFacebook()">
+                    <span>👍 Facebook</span>
+                </button>
+                <button class="share-btn share-twitter" onclick="shareOnTwitter()">
+                    <span>𝕏 Twitter</span>
+                </button>
+                <button class="share-btn share-download" onclick="downloadCertificate()">
+                    <span>⬇️ Download</span>
+                </button>
+            </div>
+
+            <button class="modal-donate-btn" onclick="closeModal('success-modal')">Continue</button>
+        </div>
+    </div>
+
+    <!-- Donors Section -->
+    <section class="donors-section">
+        <div class="donors-container">
+            <h2 class="donors-title">Our Generous Donors</h2>
+            <p class="donors-subtitle">Join these wonderful souls in supporting our sacred cows</p>
+            <div class="donors-grid" id="donorsList">
+                <div class="donor-card">
+                    <span class="donor-emoji">🙏</span>
+                    <p class="donor-name">Your donation will appear here</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Mission Section -->
     <section class="mission">
@@ -316,6 +383,9 @@
     </div>
 
     <script>
+        // Donor storage
+        let donors = JSON.parse(localStorage.getItem('donors')) || [];
+
         // Modal Functions
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
@@ -331,6 +401,134 @@
                 modal.classList.remove('active');
                 document.body.style.overflow = 'auto';
             }
+        }
+
+        // Donation Completion
+        function completeDonation(type, amount, campaign) {
+            let nameInput, emailInput;
+            
+            switch(type) {
+                case 'donate':
+                    nameInput = document.getElementById('donor-name-donate');
+                    emailInput = document.getElementById('donor-email-donate');
+                    break;
+                case 'feed':
+                    nameInput = document.getElementById('donor-name-feed');
+                    emailInput = document.getElementById('donor-email-feed');
+                    break;
+                case 'heal':
+                    nameInput = document.getElementById('donor-name-heal');
+                    emailInput = document.getElementById('donor-email-heal');
+                    break;
+            }
+
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+
+            if (!name) {
+                alert('Please enter your name');
+                return;
+            }
+
+            // Add to donors list
+            const donor = {
+                name: name,
+                amount: amount,
+                campaign: campaign,
+                date: new Date().toLocaleDateString('en-IN')
+            };
+
+            donors.unshift(donor);
+            localStorage.setItem('donors', JSON.stringify(donors));
+
+            // Update certificate
+            document.getElementById('certName').textContent = name;
+            document.getElementById('certAmount').textContent = 'Amount: ' + amount;
+            document.getElementById('certDate').textContent = donor.date;
+
+            // Store donation details for sharing
+            window.currentDonation = donor;
+            window.donorEmail = email;
+
+            // Close current modal and show success
+            const currentModal = document.querySelector('.modal.active');
+            if (currentModal) {
+                currentModal.classList.remove('active');
+            }
+
+            setTimeout(() => {
+                openModal('success-modal');
+                updateDonorsDisplay();
+            }, 300);
+        }
+
+        // Update donors display
+        function updateDonorsDisplay() {
+            const donorsList = document.getElementById('donorsList');
+            
+            if (donors.length === 0) {
+                donorsList.innerHTML = '<div class="donor-card"><span class="donor-emoji">🙏</span><p class="donor-name">Your donation will appear here</p></div>';
+                return;
+            }
+
+            donorsList.innerHTML = donors.map((donor, index) => `
+                <div class="donor-card">
+                    <span class="donor-emoji">❤️</span>
+                    <p class="donor-name">${donor.name}</p>
+                    <p style="font-size: 0.8rem; color: #999; margin-top: 0.3rem;">${donor.campaign}</p>
+                </div>
+            `).join('');
+        }
+
+        // Share Functions
+        function shareOnWhatsApp() {
+            const text = `🐄 I just donated ${window.currentDonation.amount} to ${window.currentDonation.campaign} through Neem Karori Baba Gau Seva! Join me in supporting these sacred cows. 🙏`;
+            const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        }
+
+        function shareOnFacebook() {
+            const text = `I just donated ${window.currentDonation.amount} to ${window.currentDonation.campaign} through Neem Karori Baba Gau Seva! 🐄🙏`;
+            const url = `https://www.facebook.com/sharer/sharer.php?quote=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        }
+
+        function shareOnTwitter() {
+            const text = `🐄 I just donated ${window.currentDonation.amount} to ${window.currentDonation.campaign} through Neem Karori Baba Gau Seva! Help us protect sacred cows. 🙏 #GauSeva`;
+            const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        }
+
+        function downloadCertificate() {
+            const certificate = document.getElementById('certificatePreview');
+            const element = document.createElement('div');
+            element.innerHTML = certificate.innerHTML;
+            element.style.padding = '2rem';
+            element.style.backgroundColor = '#fffdd0';
+            
+            const text = `
+NEEM KARORI BABA GAU SEVA
+Certificate of Appreciation
+
+This is to certify that
+${window.currentDonation.name}
+
+has generously contributed
+${window.currentDonation.amount}
+
+to our Gau Seva mission to support, protect and care for our sacred cows.
+
+Date: ${window.currentDonation.date}
+
+🙏 Gratitude & Blessings 🙏
+            `;
+
+            const link = document.createElement('a');
+            link.href = 'data:text/plain,' + encodeURIComponent(text);
+            link.download = `GauSeva-Donation-${window.currentDonation.name}.txt`;
+            link.click();
+
+            alert('Certificate downloaded! 🎉');
         }
 
         // Event listeners for action buttons
@@ -369,6 +567,9 @@
                 }
             });
         });
+
+        // Initialize donors display on page load
+        window.addEventListener('load', updateDonorsDisplay);
     </script>
 </body>
 </html>

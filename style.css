@@ -29,22 +29,29 @@ nav ul li a { text-decoration: none; color: #333; font-weight: 500; }
     color: white; text-align: center;
 }
 .hero h1 { font-size: 50px; margin-bottom: 15px; }
-.btn {
+ .btn {
     display: inline-block;
     padding: 15px 35px;
     background: #f39c12;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 50px; /* Rounded corners */
     font-weight: bold;
     margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(243, 156, 18, 0.4);
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #e67e22;
+    transform: scale(1.1);
 }
 
 /* General Container */
 .container { padding: 80px 20px; text-align: center; max-width: 1000px; margin: auto; }
 h2 { color: #2d5a27; font-size: 36px; margin-bottom: 20px; }
 
-/* Services Section */
+/* Services Section *.btn/
 .services-container { background: #f9f9f9; padding: 80px 20px; text-align: center; }
 .services-grid {
     display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
@@ -58,3 +65,22 @@ h2 { color: #2d5a27; font-size: 36px; margin-bottom: 20px; }
 
 /* Footer */
 footer { background: #2d5a27; color: white; padding: 30px; text-align: center; }
+/* Gallery Styles */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+}

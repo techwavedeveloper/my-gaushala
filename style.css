@@ -1,86 +1,45 @@
-/* Basic Setup */
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 html { scroll-behavior: smooth; }
 
-/* Navigation */
+/* Professional Navbar */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    background: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: sticky; top: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 8%; background: white; box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    position: sticky; top: 0; z-index: 1000;
 }
-.logo { font-size: 24px; font-weight: bold; color: #2d5a27; }
-.logo span { color: #f39c12; }
-nav ul { display: flex; list-style: none; }
-nav ul li { margin-left: 20px; }
-nav ul li a { text-decoration: none; color: #333; font-weight: 500; }
+.logo { font-size: 26px; font-weight: 800; color: #1b4332; }
+.logo span { color: #d97706; }
+.navbar ul { display: flex; list-style: none; gap: 30px; }
+.navbar ul li a { text-decoration: none; color: #444; font-weight: 600; }
 
-/* Hero/Home Section */
+/* Full Screen Hero */
 .hero {
-    height: 80vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&q=80&w=1500');
-    background-size: cover;
-    background-position: center;
-    display: flex; align-items: center; justify-content: center;
-    color: white; text-align: center;
+    height: 85vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?q=80&w=2070');
+    background-size: cover; background-position: center;
+    display: flex; align-items: center; justify-content: center; color: white; text-align: center;
 }
-.hero h1 { font-size: 50px; margin-bottom: 15px; }
- .btn {
-    display: inline-block;
-    padding: 15px 35px;
-    background: #f39c12;
-    color: white;
-    text-decoration: none;
-    border-radius: 50px; /* Rounded corners */
-    font-weight: bold;
-    margin-top: 20px;
-    box-shadow: 0 4px 15px rgba(243, 156, 18, 0.4);
-    transition: 0.3s;
+.hero h1 { font-size: 4rem; margin-bottom: 10px; }
+.btn { 
+    background: #d97706; color: white; padding: 15px 40px; 
+    text-decoration: none; border-radius: 50px; font-weight: bold;
+    display: inline-block; margin-top: 25px; transition: 0.3s;
 }
+.btn:hover { background: #b45309; transform: scale(1.05); }
 
-.btn:hover {
-    background: #e67e22;
-    transform: scale(1.1);
-}
+/* Layout Grid */
+.section { padding: 80px 8%; text-align: center; background: #fdfaf5; }
+.section-title { font-size: 32px; color: #1b4332; margin-bottom: 50px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
 
-/* General Container */
-.container { padding: 80px 20px; text-align: center; max-width: 1000px; margin: auto; }
-h2 { color: #2d5a27; font-size: 36px; margin-bottom: 20px; }
+.card { 
+    background: white; padding: 25px; border-radius: 15px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: 0.3s;
+}
+.card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
+.card:hover { transform: translateY(-10px); }
 
-/* Services Section *.btn/
-.services-container { background: #f9f9f9; padding: 80px 20px; text-align: center; }
-.services-grid {
-    display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
-    margin-top: 40px;
-}
-.service-card {
-    background: white; padding: 30px; width: 300px; border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: 0.3s;
-}
-.service-card:hover { transform: translateY(-10px); }
-
-/* Footer */
-footer { background: #2d5a27; color: white; padding: 30px; text-align: center; }
-/* Gallery Styles */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-    margin-top: 30px;
-}
-
-.gallery-grid img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px;
-    transition: 0.3s;
-}
-
-.gallery-grid img:hover {
-    transform: scale(1.05);
-}
+footer { background: #1b4332; color: white; padding: 60px 8%; text-align: center; }

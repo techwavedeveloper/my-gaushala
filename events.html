@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Neem Karori Baba Gau Seva</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                Gao<span class="logo-green">Shala</span>
+            </a>
+            <nav class="navbar-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="programs.html" class="nav-link">Programs</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="donate.html" class="nav-donate">Donate Now</a>
+            </nav>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header" style="background: linear-gradient(135deg, rgba(94, 47, 13, 0.7) 0%, rgba(230, 138, 0, 0.7) 100%), url('https://images.unsplash.com/photo-1540575467063-178f50c2dff0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center;">
+        <div class="page-header-content">
+            <h1>Events & Calendar</h1>
+            <p>Join Us for Meaningful Experiences</p>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section">
+        <div class="events-container">
+            <h2 class="section-title">Upcoming Events</h2>
+            <p class="section-subtitle">Be part of our mission through events and activities</p>
+
+            <!-- Event Filter -->
+            <div class="event-filter">
+                <button class="filter-btn active" onclick="filterEvents('all')">All Events</button>
+                <button class="filter-btn" onclick="filterEvents('workshop')">Workshops</button>
+                <button class="filter-btn" onclick="filterEvents('festival')">Festivals</button>
+                <button class="filter-btn" onclick="filterEvents('visit')">Sanctuary Visits</button>
+            </div>
+
+            <!-- Featured Event -->
+            <div class="featured-event">
+                <div class="featured-event-image">
+                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Annual Gau Seva Mela">
+                </div>
+                <div class="featured-event-content">
+                    <span class="event-tag upcoming">Upcoming</span>
+                    <h2>Annual Gau Seva Mela 2025</h2>
+                    <p class="event-date">
+                        <span class="date-icon">📅</span>
+                        July 15-16, 2025
+                    </p>
+                    <p class="event-location">
+                        <span class="location-icon">📍</span>
+                        Gau Seva Sanctuary, Sector-144, Greater Noida
+                    </p>
+                    <p class="event-description">
+                        Join us for our biggest annual celebration! Experience spiritual ceremonies, cow interactions, food festival, cultural programs, and more. This is a family event celebrating cow protection and community.
+                    </p>
+                    <div class="event-highlights">
+                        <span class="highlight">Spiritual Ceremonies</span>
+                        <span class="highlight">Cow Interactions</span>
+                        <span class="highlight">Food Festival</span>
+                        <span class="highlight">Cultural Programs</span>
+                    </div>
+                    <button class="register-btn" onclick="openModal('donate-modal')">Register Now</button>
+                </div>
+            </div>
+
+            <!-- Events Grid -->
+            <div class="events-grid">
+                <!-- Event 1 -->
+                <div class="event-card" data-category="workshop">
+                    <div class="event-card-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Gau Seva Workshop">
+                        <span class="event-type">Workshop</span>
+                    </div>
+                    <div class="event-card-content">
+                        <h3>Gau Seva Fundamentals Workshop</h3>
+                        <p class="event-date-time">
+                            <span class="icon">📅</span>
+                            June 28, 2025 | 10:00 AM
+                        </p>
+                        <p class="event-location-small">
+                            <span class="icon">📍</span>
+                            Training Center
+                        </p>
+                        <p class="event-desc">Learn about cow care, nutrition, and health management from our expert veterinarians.</p>
+                        <div class="event-meta">
+                            <span class="duration">3 hours</span>
+                            <span class="capacity">Limited: 50</span>
+                        </div>
+                        <button class="event-btn" onclick="openModal('donate-modal')">Register</button>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="event-card" data-category="visit">
+                    <div class="event-card-image">
+                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sanctuary Visit">
+                        <span class="event-type">Sanctuary Visit</span>
+                    </div>
+                    <div class="event-card-content">
+                        <h3>Weekend Sanctuary Visit</h3>
+                        <p class="event-date-time">
+                            <span class="icon">📅</span>
+                            June 29, 2025 | 9:00 AM
+                        </p>
+                        <p class="event-location-small">
+                            <span class="icon">📍</span>
+                            Main Sanctuary
+                        </p>
+                        <p class="event-desc">Guided tour of our sanctuary with opportunity to interact with cows and learn about their stories.</p>
+                        <div class="event-meta">
+                            <span class="duration">4 hours</span>
+                            <span class="capacity">Limited: 30</span>
+                        </div>
+                        <button class="event-btn" onclick="openModal('donate-modal')">Register</button>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="event-card" data-category="festival">
+                    <div class="event-card-image">
+                        <img src="https://images.unsplash.com/photo-1533256471208-4fd5b16e9330?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Krishna Janmashtami">
+                        <span class="event-type">Festival</span>
+                    </div>
+                    <div class="event-card-content">
+                        <h3>Krishna Janmashtami Celebration</h3>
+                        <p class="event-date-time">
+                            <span class="icon">📅</span>
+                            July 21, 2025
+                        </p>
+                        <p class="event-location-small">
+                            <span class="icon">📍</span>
+                            Sanctuary Grounds
+                        </p>
+                        <p class="event-desc">Celebrate Krishna's birth with spiritual ceremonies and special offerings to cows.</p>
+                        <div class="event-meta">
+                            <span class="duration">Full Day</span>
+                            <span class="capacity">Family Event</span>
+                        </div>
+                        <button class="event-btn" onclick="openModal('donate-modal')">Register</button>
+                    </div>
+                </div>
+
+                <!-- Event 4 -->
+                <div class="event-card" data-category="workshop">
+                    <div class="event-card-image">
+                        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Nutrition Workshop">
+                        <span class="event-type">Workshop</span>
+                    </div>
+                    <div class="event-card-content">
+                        <h3>Organic Nutrition Workshop</h3>
+                        <p class="event-date-time">
+                            <span class="icon">📅</span>
+                            July 5, 2025 | 2:00 PM
+                        </p>
+                        <p class="event-location-small">
+                            <span class="icon">📍</span>
+                            Farm Area
+                        </p>
+                        <p class="event-desc">Learn about organic feed production and sustainable nutrition for cows.</p>
+                        <div class="event-meta">
+                            <span class="duration">2 hours</span>
+                            <span class="capacity">Limited: 40</span>
+                        </div>
+                        <button class="event-btn" onclick="openModal('donate-modal')">Register</button>
+                    </div>
+                </div>
+
+                <!-- Event 5 -->
+                <div class="event-card" data-category="visit">
+                    <div class="event-card-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="School Visit">
+                        <span class="event-type">Sanctuary Visit</span>
+                    </div>
+                    <div class="event-card-content">
+                        <h3>School Group Visit Program</h3>
+                        <p class="event-date-time">
+                            <span class="icon">📅</span>
+                            Available on request
+                        </p>
+                        <p class="event-location-small">
+                            <span class="icon">📍</span>
+                            Educational Center
+                        </p>
+                        <p class="event-desc">Special programs designed for school groups to learn about cow care and animal welfare.</p>
+                        <div class="event-meta">
+                            <span class="duration">2-3 hours</span>
+                            <span class="capacity">Custom Groups</span>
+                        </div>
+                        <button class="event-btn" onclick="openModal('donate-modal')">Inquire</button>
+                    </div>
+                </div>
+
+                <!-- Event 6 -->
+                <div class="event-card" data-category="festival">
+                    <div class="event-card-image">
+                        <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Govardhan Puja">
+                        <span class="event-type">Festival</span>
+                    </div>
+                    <div class="event-card-content">
+                        <h3>Govardhan Puja Celebration</h3>
+                        <p class="event-date-time">
+                            <span class="icon">📅</span>
+                            November 1, 2025
+                        </p>
+                        <p class="event-location-small">
+                            <span class="icon">📍</span>
+                            Sanctuary Grounds
+                        </p>
+                        <p class="event-desc">Honor cows and Krishna with prayers, processions, and community celebrations.</p>
+                        <div class="event-meta">
+                            <span class="duration">Full Day</span>
+                            <span class="capacity">Family Event</span>
+                        </div>
+                        <button class="event-btn" onclick="openModal('donate-modal')">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Action Bar -->
+    <div class="bottom-action-bar">
+        <button class="action-box-btn action-donate-btn-bottom" data-modal="donate-modal">
+            <span class="action-icon-box">🐄</span>
+            <span class="action-text-box">Donate</span>
+        </button>
+        <button class="action-box-btn action-feed-btn-bottom" data-modal="feed-modal">
+            <span class="action-icon-box">❤️</span>
+            <span class="action-text-box">Feed</span>
+        </button>
+        <button class="action-box-btn action-heal-btn-bottom" data-modal="heal-modal">
+            <span class="action-icon-box">⚕️</span>
+            <span class="action-text-box">Heal</span>
+        </button>
+        <button class="action-box-btn action-whatsapp-btn-bottom" data-modal="whatsapp-modal">
+            <span class="action-icon-box">💬</span>
+            <span class="action-text-box">WhatsApp</span>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <a href="index.html" class="footer-logo">Gao<span>Shala</span></a>
+                <p class="footer-description">Dedicated to the service, protection, and welfare of cows. Join us in our mission to create a sanctuary where every cow lives with dignity and love.</p>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="programs.html">Our Programs</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Contact Us</h3>
+                <ul class="footer-contact">
+                    <li><span>📍</span> Neem Karori Baba Gau Seva,<br>Sector-144, Greater Noida - 201306</li>
+                    <li><span>📞</span> +91 9811319139</li>
+                    <li><span>✉️</span> info@sammaan.ngo</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Support Us</h3>
+                <p class="footer-cta">Your contribution can save a life today.</p>
+                <a href="donate.html" class="btn btn-primary">Donate Now</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 GaoShala. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="donate-modal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('donate-modal')"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('donate-modal')">&times;</button>
+            <div class="modal-header">
+                <span class="modal-icon">🐄</span>
+                <h2>Donate a Cow</h2>
+            </div>
+            <p class="modal-description">Sponsor the complete care of one cow for a month or year.</p>
+            <div class="modal-details">
+                <p><strong>₹2,500 / month</strong></p>
+            </div>
+            <div class="donation-form">
+                <input type="text" id="donor-name-donate" placeholder="Enter your name" class="donor-input">
+                <input type="email" id="donor-email-donate" placeholder="Enter your email" class="donor-input">
+                <button class="modal-donate-btn" onclick="completeDonation('donate', '₹2,500 / month', 'Donate a Cow')">Complete Donation</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="feed-modal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('feed-modal')"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('feed-modal')">&times;</button>
+            <div class="modal-header">
+                <span class="modal-icon">❤️</span>
+                <h2>Feed a Cow</h2>
+            </div>
+            <p class="modal-description">Contribute towards daily green fodder and nutritious meals.</p>
+            <div class="modal-details">
+                <p><strong>₹500 / meal</strong></p>
+            </div>
+            <div class="donation-form">
+                <input type="text" id="donor-name-feed" placeholder="Enter your name" class="donor-input">
+                <input type="email" id="donor-email-feed" placeholder="Enter your email" class="donor-input">
+                <button class="modal-donate-btn" onclick="completeDonation('feed', '₹500', 'Feed a Cow')">Contribute Now</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="heal-modal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('heal-modal')"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('heal-modal')">&times;</button>
+            <div class="modal-header">
+                <span class="modal-icon">⚕️</span>
+                <h2>Heal a Cow</h2>
+            </div>
+            <p class="modal-description">Support critical surgeries and emergency treatments.</p>
+            <div class="modal-details">
+                <p><strong>₹1,000 onwards</strong></p>
+            </div>
+            <div class="donation-form">
+                <input type="text" id="donor-name-heal" placeholder="Enter your name" class="donor-input">
+                <input type="email" id="donor-email-heal" placeholder="Enter your email" class="donor-input">
+                <button class="modal-donate-btn" onclick="completeDonation('heal', '₹1,000', 'Heal a Cow')">Support Medical Care</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="whatsapp-modal" class="modal">
+        <div class="modal-overlay" onclick="closeModal('whatsapp-modal')"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('whatsapp-modal')">&times;</button>
+            <div class="modal-header">
+                <span class="modal-icon">💬</span>
+                <h2>Connect on WhatsApp</h2>
+            </div>
+            <div class="modal-details">
+                <p><strong>+91 9811319139</strong></p>
+            </div>
+            <a href="https://wa.me/919811319139" target="_blank" class="modal-donate-btn">Open WhatsApp</a>
+        </div>
+    </div>
+
+    <script>
+        let donors = JSON.parse(localStorage.getItem('donors')) || [];
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function completeDonation(type, amount, campaign) {
+            let nameInput, emailInput;
+            
+            switch(type) {
+                case 'donate':
+                    nameInput = document.getElementById('donor-name-donate');
+                    emailInput = document.getElementById('donor-email-donate');
+                    break;
+                case 'feed':
+                    nameInput = document.getElementById('donor-name-feed');
+                    emailInput = document.getElementById('donor-email-feed');
+                    break;
+                case 'heal':
+                    nameInput = document.getElementById('donor-name-heal');
+                    emailInput = document.getElementById('donor-email-heal');
+                    break;
+            }
+
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+
+            if (!name) {
+                alert('Please enter your name');
+                return;
+            }
+
+            const donor = {
+                name: name,
+                amount: amount,
+                campaign: campaign,
+                date: new Date().toLocaleDateString('en-IN')
+            };
+
+            donors.unshift(donor);
+            localStorage.setItem('donors', JSON.stringify(donors));
+
+            alert(`Thank you ${name}! Your donation of ${amount} has been recorded. 🙏`);
+            nameInput.value = '';
+            emailInput.value = '';
+            closeModal(type + '-modal');
+        }
+
+        function filterEvents(category) {
+            const cards = document.querySelectorAll('.event-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => card.classList.add('show'), 10);
+                } else {
+                    card.style.display = 'none';
+                    card.classList.remove('show');
+                }
+            });
+        }
+
+        document.querySelectorAll('.action-box-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const modalId = this.getAttribute('data-modal');
+                openModal(modalId);
+            });
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>

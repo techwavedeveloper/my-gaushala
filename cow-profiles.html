@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - Neem Karori Baba Gau Seva</title>
+    <title>Cow Profiles - Neem Karori Baba Gau Seva</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -18,7 +18,7 @@
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="about.html" class="nav-link">About</a>
                 <a href="programs.html" class="nav-link">Programs</a>
-                <a href="gallery.html" class="nav-link active">Gallery</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
                 <a href="contact.html" class="nav-link">Contact</a>
                 <a href="donate.html" class="nav-donate">Donate Now</a>
             </nav>
@@ -31,107 +31,186 @@
     </header>
 
     <!-- Page Header -->
-    <section class="page-header" style="background: linear-gradient(135deg, rgba(94, 47, 13, 0.7) 0%, rgba(230, 138, 0, 0.7) 100%), url('https://images.unsplash.com/photo-1567427181208-d0055ad1e71e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center;">
+    <section class="page-header" style="background: linear-gradient(135deg, rgba(94, 47, 13, 0.7) 0%, rgba(230, 138, 0, 0.7) 100%), url('https://images.unsplash.com/photo-1546182990-dffeafbe841d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center;">
         <div class="page-header-content">
-            <h1>Our Gallery</h1>
-            <p>Meet Our Sacred Cows & See Our Work</p>
+            <h1>Cow Profiles</h1>
+            <p>Meet Our Sanctuary Family</p>
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section class="gallery-section">
-        <div class="gallery-container">
-            <h2 class="section-title">Photo Stories</h2>
+    <!-- Cow Profiles Section -->
+    <section class="cow-profiles-section">
+        <div class="cow-profiles-container">
+            <h2 class="section-title">Our Sanctuary Residents</h2>
+            <p class="section-subtitle">Each cow has a unique story. Sponsor or adopt one today!</p>
+
+            <div class="cow-profiles-grid">
+                <!-- Cow 1 -->
+                <div class="cow-profile-card">
+                    <div class="cow-image">
+                        <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Gauri">
+                        <span class="status-badge available">Available for Sponsorship</span>
+                    </div>
+                    <div class="cow-details">
+                        <h3>Gauri</h3>
+                        <p class="cow-age">Age: 5 years</p>
+                        <p class="cow-breed">Breed: Gir Cow</p>
+                        <p class="cow-story">Rescued from a dairy farm, Gauri is now thriving in our sanctuary. She's gentle, loving, and enjoys playing with other cows.</p>
+                        <div class="health-status">
+                            <span class="health-good">✓ Healthy</span>
+                            <span class="vaccinated">✓ Vaccinated</span>
+                        </div>
+                        <button class="sponsor-btn" onclick="openModal('donate-modal')">Sponsor Gauri</button>
+                    </div>
+                </div>
+
+                <!-- Cow 2 -->
+                <div class="cow-profile-card">
+                    <div class="cow-image">
+                        <img src="https://images.unsplash.com/photo-1564760055-f694f09a8be8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Radha">
+                        <span class="status-badge sponsored">Sponsored</span>
+                    </div>
+                    <div class="cow-details">
+                        <h3>Radha</h3>
+                        <p class="cow-age">Age: 7 years</p>
+                        <p class="cow-breed">Breed: Sahibi Cow</p>
+                        <p class="cow-story">Radha was rescued from street abandonment. She's now a beloved member of our family and brings joy to everyone she meets.</p>
+                        <div class="health-status">
+                            <span class="health-good">✓ Healthy</span>
+                            <span class="vaccinated">✓ Vaccinated</span>
+                        </div>
+                        <button class="view-sponsor-btn">View Sponsorship</button>
+                    </div>
+                </div>
+
+                <!-- Cow 3 -->
+                <div class="cow-profile-card">
+                    <div class="cow-image">
+                        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Lakshmi">
+                        <span class="status-badge available">Available for Sponsorship</span>
+                    </div>
+                    <div class="cow-details">
+                        <h3>Lakshmi</h3>
+                        <p class="cow-age">Age: 3 years</p>
+                        <p class="cow-breed">Breed: Hariana Cow</p>
+                        <p class="cow-story">Young and energetic Lakshmi was saved from a neglectful situation. She loves running around the sanctuary and socializing.</p>
+                        <div class="health-status">
+                            <span class="health-good">✓ Healthy</span>
+                            <span class="vaccinated">✓ Vaccinated</span>
+                        </div>
+                        <button class="sponsor-btn" onclick="openModal('donate-modal')">Sponsor Lakshmi</button>
+                    </div>
+                </div>
+
+                <!-- Cow 4 -->
+                <div class="cow-profile-card">
+                    <div class="cow-image">
+                        <img src="https://images.unsplash.com/photo-1520763945591-e614049dc628?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Nandini">
+                        <span class="status-badge adopted">Adopted</span>
+                    </div>
+                    <div class="cow-details">
+                        <h3>Nandini</h3>
+                        <p class="cow-age">Age: 6 years</p>
+                        <p class="cow-breed">Breed: Gir Cow</p>
+                        <p class="cow-story">Beautiful Nandini is an adopted cow with a loving sponsor who provides everything she needs. She's matriarch of her group.</p>
+                        <div class="health-status">
+                            <span class="health-good">✓ Healthy</span>
+                            <span class="vaccinated">✓ Vaccinated</span>
+                        </div>
+                        <button class="view-sponsor-btn">View Adoption Details</button>
+                    </div>
+                </div>
+
+                <!-- Cow 5 -->
+                <div class="cow-profile-card">
+                    <div class="cow-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Priya">
+                        <span class="status-badge available">Available for Sponsorship</span>
+                    </div>
+                    <div class="cow-details">
+                        <h3>Priya</h3>
+                        <p class="cow-age">Age: 4 years</p>
+                        <p class="cow-breed">Breed: Hariana Cow</p>
+                        <p class="cow-story">Rescued from a trafficking situation, Priya has recovered beautifully. She's playful, curious, and very affectionate.</p>
+                        <div class="health-status">
+                            <span class="health-good">✓ Healthy</span>
+                            <span class="vaccinated">✓ Vaccinated</span>
+                        </div>
+                        <button class="sponsor-btn" onclick="openModal('donate-modal')">Sponsor Priya</button>
+                    </div>
+                </div>
+
+                <!-- Cow 6 -->
+                <div class="cow-profile-card">
+                    <div class="cow-image">
+                        <img src="https://images.unsplash.com/photo-1535995863535-1b06c2817362?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Savitri">
+                        <span class="status-badge available">Available for Sponsorship</span>
+                    </div>
+                    <div class="cow-details">
+                        <h3>Savitri</h3>
+                        <p class="cow-age">Age: 8 years</p>
+                        <p class="cow-breed">Breed: Gir Cow</p>
+                        <p class="cow-story">Elderly Savitri was rescued from difficult circumstances. Now she's living her golden years peacefully with proper medical care.</p>
+                        <div class="health-status">
+                            <span class="health-good">✓ Healthy</span>
+                            <span class="vaccinated">✓ Vaccinated</span>
+                        </div>
+                        <button class="sponsor-btn" onclick="openModal('donate-modal')">Sponsor Savitri</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Adoption Program Section -->
+    <section class="adoption-section">
+        <div class="adoption-container">
+            <h2 class="section-title">Sponsorship & Adoption Programs</h2>
+            <p class="section-subtitle">Choose how you want to help a cow</p>
             
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1564760055-f694f09a8be8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sacred Cows">
-                    <div class="gallery-overlay">
-                        <h3>Our Sacred Cows</h3>
-                        <p>Living peacefully in our sanctuary</p>
-                    </div>
+            <div class="adoption-options">
+                <div class="adoption-card">
+                    <h3>💝 Monthly Sponsorship</h3>
+                    <p class="option-description">Sponsor a cow for a month with regular updates and photos</p>
+                    <ul class="option-features">
+                        <li>Monthly care contributions</li>
+                        <li>Photo & video updates</li>
+                        <li>Email communication</li>
+                        <li>Impact reports</li>
+                        <li>Sponsorship certificate</li>
+                    </ul>
+                    <div class="option-price">₹2,500/month</div>
+                    <button class="adoption-btn" onclick="openModal('donate-modal')">Start Sponsorship</button>
                 </div>
 
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1567427181208-d0055ad1e71e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Veterinary Care">
-                    <div class="gallery-overlay">
-                        <h3>Medical Care</h3>
-                        <p>24/7 veterinary support</p>
-                    </div>
+                <div class="adoption-card featured-adoption">
+                    <h3>🎁 Annual Adoption</h3>
+                    <p class="option-description">Full year adoption with personalized relationship with your cow</p>
+                    <ul class="option-features">
+                        <li>Complete annual care</li>
+                        <li>Monthly photo updates</li>
+                        <li>Direct communication</li>
+                        <li>Quarterly progress reports</li>
+                        <li>Adoption certificate</li>
+                        <li>Exclusive member benefits</li>
+                    </ul>
+                    <div class="option-price">₹30,000/year</div>
+                    <button class="adoption-btn primary" onclick="openModal('donate-modal')">Adopt a Cow</button>
                 </div>
 
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fresh Food">
-                    <div class="gallery-overlay">
-                        <h3>Organic Fodder</h3>
-                        <p>Fresh, nutritious meals daily</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1516521318423-f06f70570ec0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Rescued Cows">
-                    <div class="gallery-overlay">
-                        <h3>Rescue Stories</h3>
-                        <p>From streets to sanctuary</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1549887534-f0e0d51c1ae5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Relaxing Cows">
-                    <div class="gallery-overlay">
-                        <h3>Happy & Healthy</h3>
-                        <p>Cows enjoying their sanctuary</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1582353865267-a97f08f97cf1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Community">
-                    <div class="gallery-overlay">
-                        <h3>Our Community</h3>
-                        <p>Volunteers dedicated to serving</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Rescue Stories -->
-    <section class="stories-section">
-        <h2 class="section-title">Rescue Stories</h2>
-        <div class="stories-grid">
-            <div class="story-card">
-                <div class="story-image">
-                    <img src="https://images.unsplash.com/photo-1564760055-f694f09a8be8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Gauri">
-                </div>
-                <div class="story-content">
-                    <h3>Gauri's Journey</h3>
-                    <p><strong>Found:</strong> Abandoned on the streets with injuries</p>
-                    <p><strong>Story:</strong> Gauri was rescued from the busy roads of Noida in critical condition. After 3 months of intensive veterinary care, she has fully recovered and now enjoys peaceful days in our sanctuary.</p>
-                    <span class="story-tag">Rescue Success</span>
-                </div>
-            </div>
-
-            <div class="story-card">
-                <div class="story-image">
-                    <img src="https://images.unsplash.com/photo-1567427181208-d0055ad1e71e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Radha">
-                </div>
-                <div class="story-content">
-                    <h3>Radha's Recovery</h3>
-                    <p><strong>Found:</strong> Injured with a broken leg</p>
-                    <p><strong>Story:</strong> Radha arrived unable to walk. Our veterinarians performed surgery and provided months of rehabilitation. Today, she runs and plays with other cows.</p>
-                    <span class="story-tag">Medical Success</span>
-                </div>
-            </div>
-
-            <div class="story-card">
-                <div class="story-image">
-                    <img src="https://images.unsplash.com/photo-1549887534-f0e0d51c1ae5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Lakshmi">
-                </div>
-                <div class="story-content">
-                    <h3>Lakshmi's New Life</h3>
-                    <p><strong>Found:</strong> Malnourished and neglected</p>
-                    <p><strong>Story:</strong> Lakshmi was severely malnourished when rescued. With proper nutrition and care, she has transformed into a healthy, energetic cow loved by all.</p>
-                    <span class="story-tag">Care & Love</span>
+                <div class="adoption-card">
+                    <h3>❤️ Lifetime Support</h3>
+                    <p class="option-description">Lifelong commitment to a cow's care and wellbeing</p>
+                    <ul class="option-features">
+                        <li>Lifetime care coverage</li>
+                        <li>Regular updates</li>
+                        <li>Special recognition</li>
+                        <li>Annual reports</li>
+                        <li>Lifetime certificate</li>
+                        <li>Legacy naming option</li>
+                    </ul>
+                    <div class="option-price">₹2,00,000</div>
+                    <button class="adoption-btn" onclick="openModal('donate-modal')">Lifetime Support</button>
                 </div>
             </div>
         </div>
@@ -169,7 +248,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="gallery.html">Our Gallery</a></li>
+                    <li><a href="programs.html">Our Programs</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </div>

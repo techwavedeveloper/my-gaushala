@@ -440,55 +440,67 @@ body {
 }
 
 .action-donate-btn-bottom {
-    border-left: 2px solid #ff9f1c;
+    background: linear-gradient(135deg, #ff9f1c 0%, #ff8c00 100%);
+    color: white;
+    border: none;
 }
 
 .action-donate-btn-bottom:hover {
-    background: rgba(255, 159, 28, 0.1);
-    color: #ff8c00;
+    background: linear-gradient(135deg, #ff8c00 0%, #ff7c00 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 140, 0, 0.3);
 }
 
-.action-donate-btn-bottom:hover .action-text-box {
-    color: #ff8c00;
+.action-donate-btn-bottom .action-text-box {
+    color: white;
 }
 
 .action-feed-btn-bottom {
-    border-left: 2px solid #2a9d8f;
+    background: linear-gradient(135deg, #2a9d8f 0%, #1b6b60 100%);
+    color: white;
+    border: none;
 }
 
 .action-feed-btn-bottom:hover {
-    background: rgba(42, 157, 143, 0.1);
-    color: #2a9d8f;
+    background: linear-gradient(135deg, #1b6b60 0%, #0d5450 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(42, 157, 143, 0.3);
 }
 
-.action-feed-btn-bottom:hover .action-text-box {
-    color: #2a9d8f;
+.action-feed-btn-bottom .action-text-box {
+    color: white;
 }
 
 .action-heal-btn-bottom {
-    border-left: 2px solid #f4d35e;
+    background: linear-gradient(135deg, #f4d35e 0%, #f0c419 100%);
+    color: #333;
+    border: none;
 }
 
 .action-heal-btn-bottom:hover {
-    background: rgba(244, 211, 94, 0.1);
-    color: #d4a500;
+    background: linear-gradient(135deg, #f0c419 0%, #e8b71f 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 211, 94, 0.3);
 }
 
-.action-heal-btn-bottom:hover .action-text-box {
-    color: #d4a500;
+.action-heal-btn-bottom .action-text-box {
+    color: #333;
 }
 
 .action-whatsapp-btn-bottom {
-    border-left: 2px solid #25a742;
+    background: linear-gradient(135deg, #25a742 0%, #1b7f34 100%);
+    color: white;
+    border: none;
 }
 
 .action-whatsapp-btn-bottom:hover {
-    background: rgba(37, 167, 66, 0.1);
-    color: #25a742;
+    background: linear-gradient(135deg, #1b7f34 0%, #0f5a24 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 167, 66, 0.3);
 }
 
-.action-whatsapp-btn-bottom:hover .action-text-box {
-    color: #25a742;
+.action-whatsapp-btn-bottom .action-text-box {
+    color: white;
 }
 
 /* Modal Styles */

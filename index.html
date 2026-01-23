@@ -295,6 +295,26 @@
         </div>
     </footer>
 
+    <!-- Bottom Action Bar -->
+    <div class="bottom-action-bar">
+        <button class="action-box-btn action-donate-btn-bottom" data-modal="donate-modal">
+            <span class="action-icon-box">🐄</span>
+            <span class="action-text-box">Donate</span>
+        </button>
+        <button class="action-box-btn action-feed-btn-bottom" data-modal="feed-modal">
+            <span class="action-icon-box">❤️</span>
+            <span class="action-text-box">Feed</span>
+        </button>
+        <button class="action-box-btn action-heal-btn-bottom" data-modal="heal-modal">
+            <span class="action-icon-box">⚕️</span>
+            <span class="action-text-box">Heal</span>
+        </button>
+        <button class="action-box-btn action-whatsapp-btn-bottom" data-modal="whatsapp-modal">
+            <span class="action-icon-box">💬</span>
+            <span class="action-text-box">WhatsApp</span>
+        </button>
+    </div>
+
     <script>
         // Modal Functions
         function openModal(modalId) {
@@ -315,6 +335,14 @@
 
         // Event listeners for action buttons
         document.querySelectorAll('.action-btn-floating').forEach(button => {
+            button.addEventListener('click', function() {
+                const modalId = this.getAttribute('data-modal');
+                openModal(modalId);
+            });
+        });
+
+        // Event listeners for bottom action bar buttons
+        document.querySelectorAll('.action-box-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const modalId = this.getAttribute('data-modal');
                 openModal(modalId);

@@ -177,10 +177,43 @@ body {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.6) 100%);
+    /* Lightened overlay so background photos are more visible */
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.32) 0%, rgba(0, 0, 0, 0.16) 50%, rgba(0, 0, 0, 0.32) 100%);
     z-index: 10;
 }
 
+/* Slide controls (dots) */
+.hero-controls {
+    position: absolute;
+    left: 50%;
+    bottom: 2rem;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 25; /* above overlay content */
+}
+
+.hero-controls button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.45);
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.hero-controls button.active {
+    background: var(--color-saffron);
+    transform: scale(1.25);
+}
+
+/* Make hero section slightly less dark on small screens */
+@media (max-width: 640px) {
+    .hero-overlay {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.24) 100%);
+    }
+}
 .hero-bg {
     position: absolute;
     inset: 0;

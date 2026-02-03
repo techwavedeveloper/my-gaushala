@@ -642,21 +642,36 @@ Date: ${window.currentDonation.date}
         // Initialize donors display on page load
         window.addEventListener('load', updateDonorsDisplay);
 
-        // ✅ Background slideshow setup
+        // ✅ Background slideshow setup with controls
         (function() {
             const slides = document.querySelectorAll('.hero-slides .slide');
             let current = 0;
             const interval = 6000; // 6 seconds
+            let timer = null;
 
             function goTo(index) {
+                if (!slides[index]) return;
                 slides[current].classList.remove('active');
                 slides[index].classList.add('active');
+                updateControls(index);
                 current = index;
             }
 
             function next() {
                 const nxt = (current + 1) % slides.length;
                 goTo(nxt);
+            }
+
+            function startTimer() {
+                stopTimer();
+                timer = setInterval(next, interval);
+            }
+
+            function stopTimer() {
+                if (timer) {
+                    clearInterval(timer);
+                    timer = null;
+                }
             }
 
             // Preload images for smooth transitions
@@ -668,8 +683,38 @@ Date: ${window.currentDonation.date}
                 }
             });
 
-            if (slides.length > 1) {
-                setInterval(next, interval);
+            // Create controls (dots)
+            const controls = document.createElement('div');
+            controls.className = 'hero-controls';
+
+            slides.forEach((_, idx) => {
+                const btn = document.createElement('button');
+                btn.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
+                btn.addEventListener('click', () => {
+                    goTo(idx);
+                    startTimer();
+                });
+                controls.appendChild(btn);
+            });
+
+            // Attach controls inside hero (above overlay) so they're visible
+            const hero = document.querySelector('.hero');
+            if (hero) hero.appendChild(controls);
+
+            function updateControls(activeIdx) {
+                const btns = controls.querySelectorAll('button');
+                btns.forEach((b, i) => b.classList.toggle('active', i === activeIdx));
+            }
+
+            // Start slideshow only if we have slides
+            if (slides.length > 0) {
+                updateControls(0);
+                startTimer();
+
+                // Pause on hover for better usability
+                const heroEl = document.querySelector('.hero');
+                heroEl.addEventListener('mouseenter', stopTimer);
+                heroEl.addEventListener('mouseleave', startTimer);
             }
         })();
     </script>

@@ -33,7 +33,13 @@
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-bg">
-            <img src="https://images.unsplash.com/photo-1564760055-f694f09a8be8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Cow Shelter">
+            <!-- Slideshow slides: save your images as images/slide1.jpg, images/slide2.jpg -->
+            <div class="hero-slides" id="heroSlides" aria-hidden="true">
+                <div class="slide active" style="background-image: url('images/slide1.jpg')" role="img" aria-label="Cow slide 1"></div>
+                <div class="slide" style="background-image: url('images/slide2.jpg')" role="img" aria-label="Cow slide 2"></div>
+                <!-- Fallback slide (online) - will display if local images are not available -->
+                <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1564760055-f694f09a8be8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')" role="img" aria-label="Fallback cow slide"></div>
+            </div>
         </div>
         <div class="hero-content">
             <div class="hero-badge">
@@ -635,6 +641,37 @@ Date: ${window.currentDonation.date}
 
         // Initialize donors display on page load
         window.addEventListener('load', updateDonorsDisplay);
+
+        // ✅ Background slideshow setup
+        (function() {
+            const slides = document.querySelectorAll('.hero-slides .slide');
+            let current = 0;
+            const interval = 6000; // 6 seconds
+
+            function goTo(index) {
+                slides[current].classList.remove('active');
+                slides[index].classList.add('active');
+                current = index;
+            }
+
+            function next() {
+                const nxt = (current + 1) % slides.length;
+                goTo(nxt);
+            }
+
+            // Preload images for smooth transitions
+            slides.forEach(s => {
+                const match = s.style.backgroundImage.match(/url\(['"]?(.*?)['"]?\)/);
+                if (match && match[1]) {
+                    const img = new Image();
+                    img.src = match[1];
+                }
+            });
+
+            if (slides.length > 1) {
+                setInterval(next, interval);
+            }
+        })();
     </script>
 </body>
 </html>

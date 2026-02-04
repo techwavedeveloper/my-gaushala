@@ -1,0 +1,10 @@
+# Ignore environment files and node modules for server
+/server/node_modules
+/server/.env
+
+# Ignore other node_modules at root (if any)
+node_modules
+
+# Ignore local editor files
+.vscode
+.DS_Store

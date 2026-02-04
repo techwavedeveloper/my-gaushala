@@ -1,0 +1,1 @@
+{"error":{"error":{"code":"BAD_REQUEST_ERROR","description":"Authentication failed"},"statusCode":401},"level":"error","message":"order_creation_failed"}

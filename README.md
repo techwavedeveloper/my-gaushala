@@ -279,6 +279,16 @@ All images sourced from Unsplash with professional quality:
 
 ---
 
+## Payments Backend (Ready) ✅
+- A production-ready **Razorpay** backend lives in `/server` with:
+  - Order creation, payment verification and webhook handling
+  - SQLite storage (native) with JSON fallback for environments without build tools
+  - Admin endpoints protected by basic auth: `/admin/donors`, `/admin/export`
+  - Dockerfile and `docker-compose.yml` for easy deployment
+- See `/PAYMENT_SETUP.md` and `/server/README.md` for setup, webhook configuration and deployment notes.
+
+---
+
 **Website Version**: 2.0 (Complete Multi-Page Nonprofit Platform)
 **Last Updated**: June 2025
 **Status**: Production Ready ✅

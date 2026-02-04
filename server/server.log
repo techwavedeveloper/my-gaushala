@@ -1,0 +1,6 @@
+nohup: ignoring input
+Payments server running on port 3000
+{
+  statusCode: 401,
+  error: { description: 'Authentication failed', code: 'BAD_REQUEST_ERROR' }
+}

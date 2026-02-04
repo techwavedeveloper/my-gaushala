@@ -313,8 +313,10 @@
         </div>
     </div>
 
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
         let donors = JSON.parse(localStorage.getItem('donors')) || [];
+        const API_BASE = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") ? "http://localhost:3000" : "";
 
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
@@ -334,6 +336,11 @@
 
         function completeDonation(type, amount, campaign) {
             let nameInput, emailInput;
+            
+            if (window.currentDonationType) {
+                amount = window.currentDonationType.amount;
+                campaign = window.currentDonationType.campaign;
+            }
             
             switch(type) {
                 case 'donate':
@@ -357,6 +364,77 @@
                 alert('Please enter your name');
                 return;
             }
+
+            const rupees = parseInt(String(amount).replace(/[^\d]/g,''), 10);
+            if (!rupees || isNaN(rupees)) {
+                alert('Invalid donation amount');
+                return;
+            }
+            const amountInPaise = rupees * 100;
+
+            // Create order on server
+            fetch(API_BASE + '/api/create-order', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ amount: amountInPaise, currency: 'INR', name, email, campaign })
+            })
+            .then(res => res.json())
+            .then(order => {
+                if (!order || order.error) {
+                    alert('Could not create payment order. Please try UPI or contact support.');
+                    return;
+                }
+                const options = {
+                    key: order.key,
+                    amount: order.amount,
+                    currency: order.currency,
+                    name: 'GaoShala',
+                    description: campaign,
+                    order_id: order.id,
+                    prefill: { name, email },
+                    handler: function (response) {
+                        // Verify payment on server
+                        fetch(API_BASE + '/api/verify-payment', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                razorpay_payment_id: response.razorpay_payment_id,
+                                razorpay_order_id: response.razorpay_order_id,
+                                razorpay_signature: response.razorpay_signature,
+                                name, email, amount: rupees, campaign
+                            })
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data && data.success) {
+                                alert(`Thank you ${name}! Your payment of ₹${rupees} was successful. 🙏`);
+                                nameInput.value = '';
+                                emailInput.value = '';
+                                closeModal(type + '-modal');
+                                if (typeof displayDonors === 'function') displayDonors();
+                            } else {
+                                alert('Payment verification failed. If you were charged, please contact support.');
+                            }
+                        })
+                        .catch(err => {
+                            console.error(err);
+                            alert('Verification request failed. Please contact support if you were charged.');
+                        });
+                    },
+                    modal: {
+                        ondismiss: function() {
+                            console.log('Payment popup closed');
+                        }
+                    }
+                };
+                const rzp = new Razorpay(options);
+                rzp.open();
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Failed to initiate payment. Try again or use UPI.');
+            });
+        }
 
             const donor = {
                 name: name,

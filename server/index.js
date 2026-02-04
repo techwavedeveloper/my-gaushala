@@ -37,16 +37,7 @@ const razorpay = new Razorpay({
   key_secret: process.env.RAZORPAY_KEY_SECRET || 'secret_placeholder'
 });
 
-const logger = winston.createLogger({
-  level: 'info',
-  format: winston.format.json(),
-  transports: [
-    new winston.transports.File({ filename: path.join(__dirname, 'logs', 'error.log'), level: 'error' }),
-    new winston.transports.File({ filename: path.join(__dirname, 'logs', 'combined.log') })
-  ]
-});
-
-// ensure logs dir exists
+// ensure logs dir exists (logger configured in ./logger.js)
 const fs = require('fs');
 const LOGS_DIR = path.join(__dirname, 'logs');
 if (!fs.existsSync(LOGS_DIR)) fs.mkdirSync(LOGS_DIR);
@@ -55,13 +46,69 @@ if (!fs.existsSync(LOGS_DIR)) fs.mkdirSync(LOGS_DIR);
 app.get('/api/health', (req, res) => res.json({ ok: true }));
 
 // Get donors (public, recent)
-app.get('/api/donors', (req, res) => {
+app.get('/api/donors', async (req, res) => {
   try {
-    const donors = db.getDonors(100);
+    const donors = await db.getDonors(100);
     res.json(donors);
   } catch (err) {
-    logger.error(err);
+    logger.error('donors_list_failed', { error: err });
     res.json([]);
+  }
+});
+
+// Photo search (server-side Unsplash proxy with caching)
+const photosCache = {}; // simple in-memory cache
+app.get('/api/photos', async (req, res) => {
+  try {
+    const q = (req.query.q || 'cow gaushala').trim();
+    const count = Math.min(parseInt(req.query.count || '12', 10), 30);
+    const cacheKey = `${q}:${count}`;
+    const now = Date.now();
+
+    // Return cached if available and not expired
+    if (photosCache[cacheKey] && photosCache[cacheKey].expires > now) {
+      return res.json(photosCache[cacheKey].data);
+    }
+
+    // If no Unsplash key, fallback to random source images
+    const accessKey = process.env.UNSPLASH_ACCESS_KEY;
+    if (!accessKey) {
+      const fallback = Array.from({ length: count }).map((_, i) => ({
+        thumb: `https://source.unsplash.com/600x400/?${encodeURIComponent(q)}&sig=${now + i}`,
+        full: `https://source.unsplash.com/1200x800/?${encodeURIComponent(q)}&sig=${now + i}`,
+        author: 'Unsplash',
+        author_link: 'https://unsplash.com',
+        unsplash_link: 'https://unsplash.com',
+        alt: 'Gaumata / Gaushala'
+      }));
+      photosCache[cacheKey] = { data: fallback, expires: now + 10 * 60 * 1000 };
+      return res.json(fallback);
+    }
+
+    // Call Unsplash Search API
+    const url = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(q)}&per_page=${count}&orientation=landscape`;
+    const r = await fetch(url, { headers: { Authorization: `Client-ID ${accessKey}` } });
+    if (!r.ok) {
+      logger.warn('unsplash_search_failed', { status: r.status });
+      return res.status(502).json({ error: 'unsplash_error' });
+    }
+
+    const json = await r.json();
+    const list = (json.results || []).map(p => ({
+      id: p.id,
+      thumb: p.urls.small || p.urls.thumb,
+      full: p.urls.full || p.urls.raw,
+      author: p.user && p.user.name ? p.user.name : 'Unsplash',
+      author_link: p.user && p.user.links && p.user.links.html ? p.user.links.html : 'https://unsplash.com',
+      unsplash_link: p.links && p.links.html ? p.links.html : 'https://unsplash.com',
+      alt: p.alt_description || p.description || 'Gaumata / Gaushala'
+    }));
+
+    photosCache[cacheKey] = { data: list, expires: now + 10 * 60 * 1000 }; // cache 10 minutes
+    res.json(list);
+  } catch (err) {
+    logger.error('photos_endpoint_error', { error: err });
+    res.status(500).json({ error: 'photos_failed' });
   }
 });
 
@@ -115,7 +162,7 @@ app.post('/api/verify-payment',
           razorpay_order_id,
           date: new Date().toLocaleDateString('en-IN')
         };
-        db.insertDonor(donor);
+        await db.insertDonor(donor);
         // send receipt if email present
         if (email && process.env.SENDGRID_API_KEY) {
           const rupees = String(amount).replace(/[^\d]/g, '');
@@ -134,7 +181,7 @@ app.post('/api/verify-payment',
 
 // Razorpay webhook endpoint (signed)
 // Use raw body for verification
-app.post('/api/webhook', bodyParser.raw({ type: 'application/json' }), (req, res) => {
+app.post('/api/webhook', bodyParser.raw({ type: 'application/json' }), async (req, res) => {
   const secret = process.env.RAZORPAY_WEBHOOK_SECRET || process.env.RAZORPAY_KEY_SECRET || '';
   const signature = req.headers['x-razorpay-signature'];
   const generated = crypto.createHmac('sha256', secret).update(req.body).digest('hex');
@@ -160,7 +207,7 @@ app.post('/api/webhook', bodyParser.raw({ type: 'application/json' }), (req, res
       date: new Date().toLocaleDateString('en-IN')
     };
     try {
-      db.insertDonor(donor);
+      await db.insertDonor(donor);
       if (donor.email && process.env.SENDGRID_API_KEY) {
         const rupees = String(p.amount / 100).replace(/[^\d]/g, '');
         emailer.sendReceipt(donor.email, donor.name, rupees, donor.campaign).catch(err => logger.error('email_error', err));
@@ -181,9 +228,9 @@ app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
 
-app.get('/admin/donors', (req, res) => {
+app.get('/admin/donors', async (req, res) => {
   try {
-    const donors = db.getDonors(1000);
+    const donors = await db.getDonors(1000);
     res.json(donors);
   } catch (err) {
     logger.error('admin_list_failed', err);
@@ -191,9 +238,9 @@ app.get('/admin/donors', (req, res) => {
   }
 });
 
-app.get('/admin/export', (req, res) => {
+app.get('/admin/export', async (req, res) => {
   try {
-    const donors = db.getDonors(10000);
+    const donors = await db.getDonors(10000);
     const csv = ['name,email,amount,campaign,date', ...donors.map(d => `${d.name.replace(/,/g,' ' )},${d.email || ''},${d.amount},${d.campaign || ''},${d.date}`)].join('\n');
     res.setHeader('Content-Type', 'text/csv');
     res.setHeader('Content-Disposition', 'attachment; filename="donors.csv"');
@@ -206,7 +253,10 @@ app.get('/admin/export', (req, res) => {
 
 if (require.main === module) {
   const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => console.log(`Payments server running on port ${PORT}`));
+  app.listen(PORT, () => {
+    console.log(`Payments server running on port ${PORT}`);
+    try { console.log('DB backend:', db.getBackend()); } catch (e) { /* ignore */ }
+  });
 }
 
 module.exports = { app };

@@ -48,6 +48,22 @@ This backend now includes:
 5. node index.js
 
 If build tools aren't available, the server will fall back to a JSON-based storage (`server/data/donors.json`) automatically.
+
+### Postgres (recommended for production)
+Set `DATABASE_URL` in your environment (example in `.env.example`). When present the server will prefer Postgres over SQLite/JSON storage. Run migrations with:
+
+```
+npm run migrate
+```
+
+This will apply `migrations/001_init.sql` to initialize the donors table.
+
+**On Vercel**: after adding `DATABASE_URL` in Project → Settings, run migrations from a machine that can reach the database (locally or CI):
+
+```
+DATABASE_URL="<your-db-url>" npm run migrate
+```
+
 ## Docker quick start
 - docker build -t gaushala-payments:latest .
 - docker run -e RAZORPAY_KEY_ID=... -e RAZORPAY_KEY_SECRET=... -p 3000:3000 gaushala-payments:latest

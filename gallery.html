@@ -43,54 +43,8 @@
         <div class="gallery-container">
             <h2 class="section-title">Photo Stories</h2>
             
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1564760055-f694f09a8be8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sacred Cows">
-                    <div class="gallery-overlay">
-                        <h3>Our Sacred Cows</h3>
-                        <p>Living peacefully in our sanctuary</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1567427181208-d0055ad1e71e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Veterinary Care">
-                    <div class="gallery-overlay">
-                        <h3>Medical Care</h3>
-                        <p>24/7 veterinary support</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fresh Food">
-                    <div class="gallery-overlay">
-                        <h3>Organic Fodder</h3>
-                        <p>Fresh, nutritious meals daily</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1516521318423-f06f70570ec0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Rescued Cows">
-                    <div class="gallery-overlay">
-                        <h3>Rescue Stories</h3>
-                        <p>From streets to sanctuary</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1549887534-f0e0d51c1ae5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Relaxing Cows">
-                    <div class="gallery-overlay">
-                        <h3>Happy & Healthy</h3>
-                        <p>Cows enjoying their sanctuary</p>
-                    </div>
-                </div>
-
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1582353865267-a97f08f97cf1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Community">
-                    <div class="gallery-overlay">
-                        <h3>Our Community</h3>
-                        <p>Volunteers dedicated to serving</p>
-                    </div>
-                </div>
+            <div class="gallery-grid" id="auto-gallery">
+                <!-- Photos will be loaded here from the server-side Unsplash proxy -->
             </div>
         </div>
     </section>
@@ -416,6 +370,57 @@
                 const modalId = this.getAttribute('data-modal');
                 openModal(modalId);
             });
+        });
+
+        // Load gallery images from server-side Unsplash proxy
+        async function loadServerGallery(containerId = 'auto-gallery', q = 'gaushala,cow', count = 12) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = '<div class="loader">Loading photos…</div>';
+
+            try {
+                const res = await fetch(API_BASE + '/api/photos?q=' + encodeURIComponent(q) + '&count=' + encodeURIComponent(count));
+                if (!res.ok) throw new Error('Photos API error');
+                const images = await res.json();
+                if (!Array.isArray(images) || images.length === 0) {
+                    container.innerHTML = '<p>No images available.</p>';
+                    return;
+                }
+
+                container.innerHTML = images.map(img => `
+                    <div class="gallery-item">
+                        <a href="${img.full}" target="_blank" rel="noopener noreferrer">
+                            <img src="${img.thumb}" alt="${(img.alt||'Gaumata / Gaushala')}" loading="lazy">
+                        </a>
+                        <div class="gallery-overlay">
+                            <h3>Gaumata</h3>
+                            <p>Photo: <a href="${img.author_link}" target="_blank" rel="noopener noreferrer">${img.author}</a> on <a href="${img.unsplash_link}" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (err) {
+                console.error(err);
+                // Fallback to client-side random images
+                container.innerHTML = '';
+                for (let i = 0; i < count; i++) {
+                    const imgUrl = `https://source.unsplash.com/600x400/?${encodeURIComponent(q)}&sig=${Date.now()+i}`;
+                    const node = document.createElement('div');
+                    node.className = 'gallery-item';
+                    node.innerHTML = `
+                        <img src="${imgUrl}" alt="Gaumata / Gaushala" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h3>Gaumata</h3>
+                            <p>Photo: Unsplash</p>
+                        </div>
+                    `;
+                    container.appendChild(node);
+                }
+            }
+        }
+
+        // Auto-load gallery on page ready
+        document.addEventListener('DOMContentLoaded', function(){
+            loadServerGallery('auto-gallery', 'gaushala cow sanctuary,Indian cow', 12);
         });
 
         document.addEventListener('keydown', function(event) {
